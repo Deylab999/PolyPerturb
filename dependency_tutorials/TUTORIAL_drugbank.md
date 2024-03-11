@@ -1,0 +1,213 @@
+
+############### Here are the codes for generating the Drug target data and the corresponding LINCS data for these targets  #################################
+
+#########  The Drug links data were downloaded from Drugbank with a license. All these data are saved under:
+
+================================================================================================================
+================================================================================================================
+================================================================================================================
+================================================================================================================
+
+code: /n/groups/price/kushal/GeneRank/code/drugs/drugbank_process.R 
+
+/n/groups/price/kushal/GeneRank/Drugbank/external_data
+
+Input file: /n/groups/price/kushal/GeneRank/Drugbank/external_data/drug_links.csv
+
+The secondary input files:
+/n/groups/price/kushal/GeneRank/Drugbank/external_data/enzyme_uniprot_links.csv
+/n/groups/price/kushal/GeneRank/Drugbank/external_data/carrier_uniprot_links.csv
+/n/groups/price/kushal/GeneRank/Drugbank/external_data/transporter_uniprot_links.csv
+/n/groups/price/kushal/GeneRank/Drugbank/external_data/target_uniprot_links.csv
+
+
+> head(drugbank, 3)
+  DrugBank.ID         Name  CAS.Number   Drug.Type KEGG.Compound.ID
+1     DB00001    Lepirudin 138068-37-8 BiotechDrug                 
+2     DB00002    Cetuximab 205923-56-4 BiotechDrug                 
+3     DB00003 Dornase alfa 143831-71-4 BiotechDrug                 
+  KEGG.Drug.ID PubChem.Compound.ID PubChem.Substance.ID ChEBI.ID PharmGKB.ID
+1       D06880                  NA             46507011       NA    PA450195
+2       D03455                  NA             46507042       NA     PA10040
+3                               NA             46507792       NA     PA10318
+  HET.ID UniProt.ID UniProt.Title GenBank.ID DPD.ID
+1            P01050    ITH1_HIRME             11916
+2                                     J00228  13175
+3            P24855   DNAS1_HUMAN     M55983    650
+                                      RxList.Link Pdrhealth.Link Wikipedia.ID
+1 http://www.rxlist.com/cgi/generic/lepirudin.htm                   Lepirudin
+2  http://www.rxlist.com/cgi/generic3/erbitux.htm                   Cetuximab
+3 http://www.rxlist.com/cgi/generic/pulmozyme.htm                Dornase_alfa
+                              Drugs.com.Link NDC.ID ChemSpider.ID BindingDB.ID
+1    http://www.drugs.com/cdi/lepirudin.html     NA            NA           NA
+2    http://www.drugs.com/cdi/cetuximab.html     NA            NA           NA
+3 http://www.drugs.com/cdi/dornase-alfa.html     NA            NA           NA
+     TTD.ID
+1 DAP000541
+2 DNC000788
+3 DAP000981
+
+
+Output: We create one file that comprises of uniprot id matched to gene symbols
+head -n 5 /n/groups/price/kushal/GeneRank/Drugbank/external_data/uniprot_hgnc_matched_mygene.txt
+
+query	notfound	X_id	X_score	entrezgene	name	symbol	taxid
+P01050	TRUE		NA	NA	NA		NA	NA	NA
+P24855	NA		1773	17.340824		1773	deoxyribonuclease 1	DNASE1	9606
+P00587	TRUE		NA	NA			NA	NA		  NA	NA
+P20333	NA		7133	16.043837		7133	TNF receptor superfamily member 1B	TNFRSF1B	9606
+
+
+Final output file:    /n/groups/price/kushal/GeneRank/Drugbank/drugbank_perdrug_fullrecords_genetargets.txt
+
+Each row is a drug and the columns correspond to drug id, drug name, target gene, biotype and other features
+
+  DrugBank.ID    Drug.Name Wikipedia.ID
+1     DB00001    Lepirudin    Lepirudin
+2     DB00002    Cetuximab    Cetuximab
+3     DB00003 Dornase alfa Dornase_alfa
+                              Drugs.com.Link   Drug.Type Gene.ID Enzyme.Gene.ID
+1    http://www.drugs.com/cdi/lepirudin.html BiotechDrug    <NA>           <NA>
+2    http://www.drugs.com/cdi/cetuximab.html BiotechDrug    <NA>           <NA>
+3 http://www.drugs.com/cdi/dornase-alfa.html BiotechDrug  DNASE1           <NA>
+  Carrier.Gene.ID Transport.Gene.ID Target.Gene.ID
+1            <NA>              <NA>             F2
+2            <NA>              <NA>         FCGR2A
+3            <NA>              <NA>           <NA>
+
+
+
+================================================================================================================
+================================================================================================================
+================================================================================================================
+================================================================================================================
+================================================================================================================
+
+
+LINCS/Cmap perurbagen analysis:
+
+code: /n/groups/price/kushal/GeneRank/code/drugs/lincs_preprocess.R
+
+For each drug target, we look at the data for a perturbagen analysis for the drug target.
+
+Input file: /n/groups/price/kushal/GeneRank/LINCS/GSE70138_Broad_LINCS_Level5_COMPZ_n118050x12328_2017-03-06.gctx
+
+Metadata:
+/n/groups/price/kushal/GeneRank/LINCS/GSE70138_Broad_LINCS_cell_info_2017-04-28.txt.gz
+
+A snapshot of the cell information metadata:
+
+   cell_id cell_type base_cell_id precursor_cell_id
+1     A375 cell line         A375              -666
+2 A375.311 cell line         A375              A375
+3     A549 cell line         A549              -666
+                                         modification sample_type primary_site
+1                                                -666       tumor         skin
+2 genetically modified to stably express Cas9 protein       tumor         skin
+3                                                -666       tumor         lung
+                                subtype original_growth_pattern
+1                    malignant melanoma                adherent
+2                    malignant melanoma                adherent
+3 non small cell lung cancer| carcinoma                adherent
+  provider_catalog_id original_source_vendor donor_age donor_sex
+1            CRL-1619                   ATCC        54         F
+2            CRL-1619                   ATCC        54         F
+3             CCL-185                   ATCC        58         M
+  donor_ethnicity
+1            -666
+2            -666
+3       Caucasian
+
+
+Gene Metadata:
+/n/groups/price/kushal/GeneRank/LINCS/GSE70138_Broad_LINCS_gene_info_2017-03-06.txt.gz
+
+head(gene_info, 3)
+  pr_gene_id pr_gene_symbol                               pr_gene_title
+1        780           DDR1 discoidin domain receptor tyrosine kinase 1
+2       7849           PAX8                                paired box 8
+3       2978         GUCA1A              guanylate cyclase activator 1A
+  pr_is_lm pr_is_bing
+1        1          1
+2        1          1
+3        0          0
+
+
+Perturbation Information metadata:
+/n/groups/price/kushal/GeneRank/LINCS/GSE70138_Broad_LINCS_pert_info_2017-03-06.txt.gz
+
+Sig info metadata:
+/n/groups/price/kushal/GeneRank/LINCS/GSE70138_Broad_LINCS_sig_info_2017-03-06.txt.gz
+
+Output files:
+
+Drug level Absolute value of Z score perturbation: (Max/Mean)
+
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drug_gene_mean_absZ.txt
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drug_gene_max_absZ.txt
+
+Drugsite level Absolute value of Z score perturbations: (Max/Mean)
+
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drugsite_gene_mean_absZ.txt
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drugsite_gene_max_absZ.txt
+
+
+
+code:  /n/groups/price/kushal/GeneRank/code/drugs/lincs_preprocess2.R
+
+Postive signed effect only
+
+Output files:
+
+Drug level Absolute value of Z score perturbation: (Max/Mean)
+
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drug_gene_mean_posZ.txt
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drug_gene_max_posZ.txt
+
+Drugsite level Absolute value of Z score perturbations: (Max/Mean)
+
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drugsite_gene_mean_posZ.txt
+/n/groups/price/kushal/GeneRank/LINCS/LINCS_drugsite_gene_max_posZ.txt
+
+
+================================================================================================================
+================================================================================================================
+================================================================================================================
+================================================================================================================
+================================================================================================================
+
+
+code:  /n/groups/price/kushal/GeneRank/code/drugs/drugbank_matched_lincs.R
+
+Match the names of the drugs between the Drugbank data and the LINCs perturbagen data. Then for the matched drug,
+we record the target gene information and perturbagen analysis information.
+
+Input: /n/groups/price/kushal/GeneRank/LINCS/*.txt where * can be of the form LINCS_drug_gene_max_posZ
+
+Output:
+
+Drug metadata information:
+/n/groups/price/kushal/GeneRank/LINCS/drugbank_res_Aug12_2020/drug_genes_meta.txt
+
+Drug perturbagen information:
+/n/groups/price/kushal/GeneRank/LINCS/drugbank_res_Aug12_2020/*_res.txt where * is as above
+
+================================================================================================================
+================================================================================================================
+================================================================================================================
+================================================================================================================
+
+
+code: /n/groups/price/kushal/GeneRank/code/drugs/nmf_lincs.R
+
+Runs NMF for k=20 and save the NMF output here:
+/n/groups/price/kushal/GeneRank/output/NMF_LINCS_Topgenes/LINCS_drug_gene_mean_absZ_res_NMF20.rda
+
+Input: GeneRank/Genes_by_X/drugbank_res_Aug12_2020/LINCS_drug_gene_mean_absZ_res.txt
+
+Names of top 500 genes for each cluster after normalization
+
+Output: /n/groups/price/kushal/GeneRank/output/NMF_LINCS_Topgenes/LINCS_drug_gene_mean_absZ_res/cluster*.txt
+
+Summary of the NMF clusters: /n/groups/price/kushal/GeneRank/output/NMF_LINCS_Topgenes/nmf_clus_20_mean_absZ.txt
+

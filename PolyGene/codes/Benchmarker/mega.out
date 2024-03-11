@@ -1,0 +1,1586 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.15.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.15 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.15 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.15.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 287001 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.15.bim
+Read 1 annotations for 287001 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.15.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.15.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.15.bed
+After filtering, 287001 SNPs remain
+Estimating LD Score.
+Reading list of 42410 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.15.snp
+After merging with --print-snps, LD Scores for 36291 SNPs will be printed.
+Writing LD Scores for 36291 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.15.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.15.l2.ldscore.gz
+         MAF       L2
+mean  0.2363   0.5668
+std   0.1452   2.4037
+min   0.0051  -0.2168
+25%   0.1084   0.0000
+50%   0.2260   0.0000
+75%   0.3630   0.1028
+max   0.5000  37.0852
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000 -0.0058
+L2  -0.0058  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1415.0
+
+Summary of Annotation Matrix Row Sums
+count    287001.0000
+mean          0.0049
+std           0.0700
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:27 2021
+Total time elapsed: 1.0m:16.74s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.14.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.14 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.14 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.14.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 324698 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.14.bim
+Read 1 annotations for 324698 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.14.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.14.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.14.bed
+After filtering, 324698 SNPs remain
+Estimating LD Score.
+Reading list of 45556 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.14.snp
+After merging with --print-snps, LD Scores for 39504 SNPs will be printed.
+Writing LD Scores for 39504 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.14.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.14.l2.ldscore.gz
+         MAF       L2
+mean  0.2308   0.4896
+std   0.1432   1.7013
+min   0.0051  -0.1602
+25%   0.1053   0.0000
+50%   0.2188   0.0000
+75%   0.3497   0.0726
+max   0.5000  19.7169
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0061
+L2   0.0061  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1429.0
+
+Summary of Annotation Matrix Row Sums
+count    324698.0000
+mean          0.0044
+std           0.0662
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:28 2021
+Total time elapsed: 1.0m:17.65s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.13.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.13 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.13 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.13.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 366200 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.13.bim
+Read 1 annotations for 366200 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.13.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.13.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.13.bed
+After filtering, 366200 SNPs remain
+Estimating LD Score.
+Reading list of 52010 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.13.snp
+After merging with --print-snps, LD Scores for 45136 SNPs will be printed.
+Writing LD Scores for 45136 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.13.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.13.l2.ldscore.gz
+         MAF       L2
+mean  0.2329   0.1703
+std   0.1436   1.1365
+min   0.0051  -0.1533
+25%   0.1063   0.0000
+50%   0.2198   0.0000
+75%   0.3548   0.0008
+max   0.5000  23.9109
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0043
+L2   0.0043  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    786.0
+
+Summary of Annotation Matrix Row Sums
+count    366200.0000
+mean          0.0021
+std           0.0463
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:31 2021
+Total time elapsed: 1.0m:21.41s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.2.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.2 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.2.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:40:40 2021
+Read list of 839590 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2.bim
+Read 1 annotations for 839590 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.2.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2.bed
+After filtering, 839590 SNPs remain
+Estimating LD Score.
+Reading list of 116575 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.2.snp
+After merging with --print-snps, LD Scores for 100038 SNPs will be printed.
+Writing LD Scores for 100038 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.2.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.2.l2.ldscore.gz
+         MAF       L2
+mean  0.2371   0.5615
+std   0.1439   2.4140
+min   0.0051  -0.2610
+25%   0.1115   0.0000
+50%   0.2280   0.0000
+75%   0.3609   0.0812
+max   0.5000  75.9556
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0527
+L2   0.0527  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    4727.0
+
+Summary of Annotation Matrix Row Sums
+count    839590.0000
+mean          0.0056
+std           0.0748
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:32 2021
+Total time elapsed: 3.0m:51.67s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.11.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.11 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.11.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:41:10 2021
+Read list of 493922 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11.bim
+Read 1 annotations for 493922 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.11.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11.bed
+After filtering, 493922 SNPs remain
+Estimating LD Score.
+Reading list of 71092 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.11.snp
+After merging with --print-snps, LD Scores for 61027 SNPs will be printed.
+Writing LD Scores for 61027 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.11.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.11.l2.ldscore.gz
+         MAF       L2
+mean  0.2389   0.8855
+std   0.1430   3.2677
+min   0.0051  -0.2679
+25%   0.1145   0.0000
+50%   0.2301   0.0000
+75%   0.3609   0.2453
+max   0.5000  44.4874
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0361
+L2   0.0361  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    3568.0
+
+Summary of Annotation Matrix Row Sums
+count    493922.0000
+mean          0.0072
+std           0.0847
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:35 2021
+Total time elapsed: 3.0m:25.07s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.16.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.16 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.16 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.16.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 316981 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.16.bim
+Read 1 annotations for 316981 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.16.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.16.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.16.bed
+After filtering, 316981 SNPs remain
+Estimating LD Score.
+Reading list of 44710 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.16.snp
+After merging with --print-snps, LD Scores for 37656 SNPs will be printed.
+Writing LD Scores for 37656 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.16.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.16.l2.ldscore.gz
+         MAF       L2
+mean  0.2370   0.2339
+std   0.1437   1.2755
+min   0.0051  -0.1812
+25%   0.1115   0.0000
+50%   0.2290   0.0000
+75%   0.3589   0.0004
+max   0.5000  29.8295
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0144
+L2   0.0144  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    797.0
+
+Summary of Annotation Matrix Row Sums
+count    316981.0000
+mean          0.0025
+std           0.0501
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:38 2021
+Total time elapsed: 1.0m:27.53s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.21.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.21 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.21 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.21.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:44:12 2021
+Read list of 138712 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.21.bim
+Read 1 annotations for 138712 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.21.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.21.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.21.bed
+After filtering, 138712 SNPs remain
+Estimating LD Score.
+Reading list of 19331 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.21.snp
+After merging with --print-snps, LD Scores for 16993 SNPs will be printed.
+Writing LD Scores for 16993 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.21.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.21.l2.ldscore.gz
+         MAF       L2
+mean  0.2398   0.3957
+std   0.1429   1.7706
+min   0.0051  -0.1542
+25%   0.1155   0.0000
+50%   0.2290   0.0000
+75%   0.3640   0.0409
+max   0.5000  35.7468
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0174
+L2   0.0174  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    832.0
+
+Summary of Annotation Matrix Row Sums
+count    138712.0000
+mean          0.0060
+std           0.0772
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:41 2021
+Total time elapsed: 29.13s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.3.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.3 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.3.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:40:39 2021
+Read list of 706350 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3.bim
+Read 1 annotations for 706350 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.3.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3.bed
+After filtering, 706350 SNPs remain
+Estimating LD Score.
+Reading list of 96664 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.3.snp
+After merging with --print-snps, LD Scores for 83286 SNPs will be printed.
+Writing LD Scores for 83286 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.3.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.3.l2.ldscore.gz
+         MAF       L2
+mean  0.2395   0.7904
+std   0.1436   2.3947
+min   0.0051  -0.2023
+25%   0.1145   0.0000
+50%   0.2311   0.0000
+75%   0.3630   0.2260
+max   0.5000  48.8681
+
+MAF/LD Score Correlation Matrix
+       MAF     L2
+MAF  1.000  0.056
+L2   0.056  1.000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    4620.0
+
+Summary of Annotation Matrix Row Sums
+count    706350.0000
+mean          0.0065
+std           0.0806
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:45 2021
+Total time elapsed: 4.0m:6.12s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.22.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.22 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.22 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.22.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:44:12 2021
+Read list of 141123 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.22.bim
+Read 1 annotations for 141123 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.22.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.22.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.22.bed
+After filtering, 141123 SNPs remain
+Estimating LD Score.
+Reading list of 20106 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.22.snp
+After merging with --print-snps, LD Scores for 17261 SNPs will be printed.
+Writing LD Scores for 17261 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.22.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.22.l2.ldscore.gz
+         MAF       L2
+mean  0.2359   0.6200
+std   0.1442   2.3190
+min   0.0051  -0.1173
+25%   0.1084   0.0000
+50%   0.2280   0.0000
+75%   0.3579   0.1344
+max   0.5000  35.6350
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0811
+L2   0.0811  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    851.0
+
+Summary of Annotation Matrix Row Sums
+count    141123.0000
+mean          0.0060
+std           0.0774
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:46 2021
+Total time elapsed: 34.18s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.5.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.5 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.5 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.5.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:42:10 2021
+Read list of 633015 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.5.bim
+Read 1 annotations for 633015 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.5.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.5.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.5.bed
+After filtering, 633015 SNPs remain
+Estimating LD Score.
+Reading list of 88059 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.5.snp
+After merging with --print-snps, LD Scores for 74950 SNPs will be printed.
+Writing LD Scores for 74950 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.5.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.5.l2.ldscore.gz
+         MAF       L2
+mean  0.2353   0.3685
+std   0.1428   1.9983
+min   0.0051  -0.2914
+25%   0.1104   0.0000
+50%   0.2260   0.0000
+75%   0.3558   0.0162
+max   0.5000  37.6340
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0194
+L2   0.0194  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    2150.0
+
+Summary of Annotation Matrix Row Sums
+count    633015.0000
+mean          0.0034
+std           0.0582
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:47 2021
+Total time elapsed: 2.0m:37.4s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.20.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.20 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.20 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.20.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:44:12 2021
+Read list of 221626 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.20.bim
+Read 1 annotations for 221626 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.20.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.20.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.20.bed
+After filtering, 221626 SNPs remain
+Estimating LD Score.
+Reading list of 36301 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.20.snp
+After merging with --print-snps, LD Scores for 31359 SNPs will be printed.
+Writing LD Scores for 31359 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.20.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.20.l2.ldscore.gz
+         MAF       L2
+mean  0.2336   0.2100
+std   0.1437   1.0490
+min   0.0051  -0.1277
+25%   0.1063   0.0000
+50%   0.2219   0.0000
+75%   0.3569   0.0000
+max   0.5000  19.3028
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0253
+L2   0.0253  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    638.0
+
+Summary of Annotation Matrix Row Sums
+count    221626.0000
+mean          0.0029
+std           0.0536
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:44:55 2021
+Total time elapsed: 42.6s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.9.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.9 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.9 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.9.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 438106 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.9.bim
+Read 1 annotations for 438106 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.9.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.9.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.9.bed
+After filtering, 438106 SNPs remain
+Estimating LD Score.
+Reading list of 63706 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.9.snp
+After merging with --print-snps, LD Scores for 55885 SNPs will be printed.
+Writing LD Scores for 55885 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.9.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.9.l2.ldscore.gz
+         MAF       L2
+mean  0.2343   0.2421
+std   0.1436   1.2506
+min   0.0051  -0.2085
+25%   0.1084   0.0000
+50%   0.2239   0.0000
+75%   0.3558   0.0027
+max   0.5000  27.0482
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0168
+L2   0.0168  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1254.0
+
+Summary of Annotation Matrix Row Sums
+count    438106.0000
+mean          0.0029
+std           0.0534
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:00 2021
+Total time elapsed: 1.0m:50.44s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.1.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.1 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.1 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.1.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:42:10 2021
+Read list of 779354 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.1.bim
+Read 1 annotations for 779354 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.1.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.1.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.1.bed
+After filtering, 779354 SNPs remain
+Estimating LD Score.
+Reading list of 116564 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.1.snp
+After merging with --print-snps, LD Scores for 98690 SNPs will be printed.
+Writing LD Scores for 98690 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.1.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.1.l2.ldscore.gz
+         MAF       L2
+mean  0.2329   0.3107
+std   0.1442   1.2818
+min   0.0051  -0.1895
+25%   0.1056   0.0000
+50%   0.2219   0.0000
+75%   0.3548   0.0482
+max   0.5000  25.6774
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0196
+L2   0.0196  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    2612.0
+
+Summary of Annotation Matrix Row Sums
+count    779354.0000
+mean          0.0034
+std           0.0578
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:08 2021
+Total time elapsed: 2.0m:57.65s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.17.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.17 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.17 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.17.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:44:13 2021
+Read list of 269222 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.17.bim
+Read 1 annotations for 269222 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.17.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.17.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.17.bed
+After filtering, 269222 SNPs remain
+Estimating LD Score.
+Reading list of 38396 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.17.snp
+After merging with --print-snps, LD Scores for 32315 SNPs will be printed.
+Writing LD Scores for 32315 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.17.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.17.l2.ldscore.gz
+         MAF       L2
+mean  0.2414   0.5572
+std   0.1449   1.8442
+min   0.0051  -0.1481
+25%   0.1135   0.0000
+50%   0.2352   0.0000
+75%   0.3671   0.1289
+max   0.5000  27.0580
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0983
+L2   0.0983  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1549.0
+
+Summary of Annotation Matrix Row Sums
+count    269222.0000
+mean          0.0058
+std           0.0756
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:10 2021
+Total time elapsed: 57.28s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.12.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.12 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.12 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.12.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 480110 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.12.bim
+Read 1 annotations for 480110 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.12.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.12.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.12.bed
+After filtering, 480110 SNPs remain
+Estimating LD Score.
+Reading list of 68635 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.12.snp
+After merging with --print-snps, LD Scores for 58127 SNPs will be printed.
+Writing LD Scores for 58127 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.12.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.12.l2.ldscore.gz
+         MAF       L2
+mean  0.2320   0.3175
+std   0.1438   1.2772
+min   0.0051  -0.0990
+25%   0.1063   0.0000
+50%   0.2198   0.0000
+75%   0.3548   0.0431
+max   0.5000  17.3796
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000 -0.0055
+L2  -0.0055  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1460.0
+
+Summary of Annotation Matrix Row Sums
+count    480110.0000
+mean          0.0030
+std           0.0551
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:11 2021
+Total time elapsed: 2.0m:0.98s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.18.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.18 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.18 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.18.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:44:12 2021
+Read list of 285156 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.18.bim
+Read 1 annotations for 285156 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.18.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.18.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.18.bed
+After filtering, 285156 SNPs remain
+Estimating LD Score.
+Reading list of 40891 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.18.snp
+After merging with --print-snps, LD Scores for 35326 SNPs will be printed.
+Writing LD Scores for 35326 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.18.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.18.l2.ldscore.gz
+         MAF       L2
+mean  0.2356   0.2107
+std   0.1434   1.0923
+min   0.0051  -0.1431
+25%   0.1094   0.0000
+50%   0.2249   0.0000
+75%   0.3569   0.0000
+max   0.5000  25.0619
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0022
+L2   0.0022  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    736.0
+
+Summary of Annotation Matrix Row Sums
+count    285156.0000
+mean          0.0026
+std           0.0507
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:13 2021
+Total time elapsed: 1.0m:0.12s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.4.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.4 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.4 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.4.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:42:10 2021
+Read list of 729645 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.4.bim
+Read 1 annotations for 729645 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.4.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.4.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.4.bed
+After filtering, 729645 SNPs remain
+Estimating LD Score.
+Reading list of 85881 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.4.snp
+After merging with --print-snps, LD Scores for 74259 SNPs will be printed.
+Writing LD Scores for 74259 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.4.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.4.l2.ldscore.gz
+         MAF       L2
+mean  0.2367   0.2598
+std   0.1431   1.3145
+min   0.0051  -0.1821
+25%   0.1115   0.0000
+50%   0.2301   0.0000
+75%   0.3579   0.0200
+max   0.5000  37.5403
+
+MAF/LD Score Correlation Matrix
+       MAF     L2
+MAF  1.000  0.025
+L2   0.025  1.000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1869.0
+
+Summary of Annotation Matrix Row Sums
+count    729645.0000
+mean          0.0026
+std           0.0505
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:16 2021
+Total time elapsed: 3.0m:5.56s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.19.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.19 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.19 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.19.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:44:13 2021
+Read list of 232363 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.19.bim
+Read 1 annotations for 232363 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.19.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.19.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.19.bed
+After filtering, 232363 SNPs remain
+Estimating LD Score.
+Reading list of 26259 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.19.snp
+After merging with --print-snps, LD Scores for 21991 SNPs will be printed.
+Writing LD Scores for 21991 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.19.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.19.l2.ldscore.gz
+         MAF       L2
+mean  0.2369   0.2922
+std   0.1428   1.1409
+min   0.0051  -0.1297
+25%   0.1125   0.0000
+50%   0.2331   0.0000
+75%   0.3569   0.0677
+max   0.5000  26.3349
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0252
+L2   0.0252  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1121.0
+
+Summary of Annotation Matrix Row Sums
+count    232363.0000
+mean          0.0048
+std           0.0693
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:19 2021
+Total time elapsed: 1.0m:6.5s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.10.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.10 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.10 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.10.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 510501 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.10.bim
+Read 1 annotations for 510501 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.10.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.10.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.10.bed
+After filtering, 510501 SNPs remain
+Estimating LD Score.
+Reading list of 73929 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.10.snp
+After merging with --print-snps, LD Scores for 64236 SNPs will be printed.
+Writing LD Scores for 64236 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.10.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.10.l2.ldscore.gz
+         MAF       L2
+mean  0.2316   0.2518
+std   0.1438   1.1274
+min   0.0051  -0.1476
+25%   0.1053   0.0000
+50%   0.2188   0.0000
+75%   0.3538   0.0265
+max   0.5000  21.0087
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0154
+L2   0.0154  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1244.0
+
+Summary of Annotation Matrix Row Sums
+count    510501.0000
+mean          0.0024
+std           0.0493
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:20 2021
+Total time elapsed: 2.0m:10.47s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.2.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.2 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.2.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:42:10 2021
+Read list of 839590 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2.bim
+Read 1 annotations for 839590 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.2.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.2.bed
+After filtering, 839590 SNPs remain
+Estimating LD Score.
+Reading list of 116575 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.2.snp
+After merging with --print-snps, LD Scores for 100038 SNPs will be printed.
+Writing LD Scores for 100038 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.2.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.2.l2.ldscore.gz
+         MAF       L2
+mean  0.2371   0.2801
+std   0.1439   1.4717
+min   0.0051  -0.2083
+25%   0.1115   0.0000
+50%   0.2280   0.0000
+75%   0.3609   0.0215
+max   0.5000  29.8523
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0448
+L2   0.0448  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    2285.0
+
+Summary of Annotation Matrix Row Sums
+count    839590.0000
+mean          0.0027
+std           0.0521
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:30 2021
+Total time elapsed: 3.0m:20.29s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.6.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.6 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.6.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:40:41 2021
+Read list of 664016 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6.bim
+Read 1 annotations for 664016 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.6.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6.bed
+After filtering, 664016 SNPs remain
+Estimating LD Score.
+Reading list of 91491 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.6.snp
+After merging with --print-snps, LD Scores for 80218 SNPs will be printed.
+Writing LD Scores for 80218 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.6.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BLD/ABC_Road_GI_BLD.6.l2.ldscore.gz
+         MAF       L2
+mean  0.2331   1.0134
+std   0.1441   3.4045
+min   0.0051  -0.3970
+25%   0.1074   0.0000
+50%   0.2219   0.0000
+75%   0.3558   0.2815
+max   0.5000  70.0782
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0036
+L2   0.0036  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    4282.0
+
+Summary of Annotation Matrix Row Sums
+count    664016.0000
+mean          0.0064
+std           0.0800
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:39 2021
+Total time elapsed: 4.0m:57.63s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.3.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.3 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.3.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:42:10 2021
+Read list of 706350 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3.bim
+Read 1 annotations for 706350 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.3.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.3.bed
+After filtering, 706350 SNPs remain
+Estimating LD Score.
+Reading list of 96664 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.3.snp
+After merging with --print-snps, LD Scores for 83286 SNPs will be printed.
+Writing LD Scores for 83286 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.3.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.3.l2.ldscore.gz
+         MAF       L2
+mean  0.2395   0.3359
+std   0.1436   1.5302
+min   0.0051  -0.3205
+25%   0.1145   0.0000
+50%   0.2311   0.0000
+75%   0.3630   0.0628
+max   0.5000  47.7504
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0243
+L2   0.0243  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    2049.0
+
+Summary of Annotation Matrix Row Sums
+count    706350.0000
+mean          0.0029
+std           0.0538
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:47 2021
+Total time elapsed: 3.0m:36.64s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.8.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.8 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.8 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.8.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 549971 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.8.bim
+Read 1 annotations for 549971 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.8.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.8.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.8.bed
+After filtering, 549971 SNPs remain
+Estimating LD Score.
+Reading list of 75345 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.8.snp
+After merging with --print-snps, LD Scores for 65167 SNPs will be printed.
+Writing LD Scores for 65167 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.8.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.8.l2.ldscore.gz
+         MAF       L2
+mean  0.2368   0.1915
+std   0.1438   1.2474
+min   0.0051  -0.2177
+25%   0.1094   0.0000
+50%   0.2270   0.0000
+75%   0.3599   0.0000
+max   0.5000  48.4950
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0059
+L2   0.0059  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1082.0
+
+Summary of Annotation Matrix Row Sums
+count    549971.0000
+mean          0.0020
+std           0.0443
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:52 2021
+Total time elapsed: 2.0m:42.64s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.7.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.7 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.7 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.7.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 589569 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.7.bim
+Read 1 annotations for 589569 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.7.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.7.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.7.bed
+After filtering, 589569 SNPs remain
+Estimating LD Score.
+Reading list of 75316 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.7.snp
+After merging with --print-snps, LD Scores for 65848 SNPs will be printed.
+Writing LD Scores for 65848 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.7.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.7.l2.ldscore.gz
+         MAF       L2
+mean  0.2376   0.4669
+std   0.1437   2.4331
+min   0.0051  -0.2782
+25%   0.1104   0.0000
+50%   0.2290   0.0000
+75%   0.3609   0.0465
+max   0.5000  62.9364
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0471
+L2   0.0471  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    2173.0
+
+Summary of Annotation Matrix Row Sums
+count    589569.0000
+mean          0.0037
+std           0.0606
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:45:56 2021
+Total time elapsed: 2.0m:45.89s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.11.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.11 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.11.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:43:10 2021
+Read list of 493922 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11.bim
+Read 1 annotations for 493922 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.11.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.11.bed
+After filtering, 493922 SNPs remain
+Estimating LD Score.
+Reading list of 71092 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.11.snp
+After merging with --print-snps, LD Scores for 61027 SNPs will be printed.
+Writing LD Scores for 61027 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.11.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.11.l2.ldscore.gz
+         MAF       L2
+mean  0.2389   0.4543
+std   0.1430   2.0538
+min   0.0051  -0.2436
+25%   0.1145   0.0000
+50%   0.2301   0.0000
+75%   0.3609   0.0851
+max   0.5000  56.8419
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000  0.0265
+L2   0.0265  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    2649.0
+
+Summary of Annotation Matrix Row Sums
+count    493922.0000
+mean          0.0054
+std           0.0730
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:46:28 2021
+Total time elapsed: 3.0m:18.31s
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.0
+* (C) 2014-2015 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--print-snps /n/groups/price/kushal/LDSC/hapmap3_snps/hm.6.snp \
+--ld-wind-cm 1.0 \
+--out /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.6 \
+--bfile /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6 \
+--yes-really  \
+--annot /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.6.annot.gz \
+--l2  
+
+Beginning analysis at Mon May 24 04:42:10 2021
+Read list of 664016 SNPs from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6.bim
+Read 1 annotations for 664016 SNPs from /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.6.annot.gz
+Read list of 489 individuals from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6.fam
+Reading genotypes from /n/groups/price/kushal/LDSC/1000G_EUR_Phase3_plink/1000G.EUR.QC.6.bed
+After filtering, 664016 SNPs remain
+Estimating LD Score.
+Reading list of 91491 SNPs for which to print LD Scores from /n/groups/price/kushal/LDSC/hapmap3_snps/hm.6.snp
+After merging with --print-snps, LD Scores for 80218 SNPs will be printed.
+Writing LD Scores for 80218 SNPs to /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.6.l2.ldscore.gz
+
+Summary of LD Scores in /n/groups/price/kushal/singlecellLDSC/data/ANNOTATIONS/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_Mean/UKB_460K.repro_NumberChildrenEverBorn_Pooled/ABC_Road_GI_BRN/ABC_Road_GI_BRN.6.l2.ldscore.gz
+         MAF       L2
+mean  0.2331   0.4760
+std   0.1441   2.3931
+min   0.0051  -0.4630
+25%   0.1074   0.0000
+50%   0.2219   0.0000
+75%   0.3558   0.0674
+max   0.5000  67.6095
+
+MAF/LD Score Correlation Matrix
+        MAF      L2
+MAF  1.0000 -0.0155
+L2  -0.0155  1.0000
+
+Annotation Correlation Matrix
+       ANNOT
+ANNOT    1.0
+
+Annotation Matrix Column Sums
+ANNOT    1989.0
+
+Summary of Annotation Matrix Row Sums
+count    664016.0000
+mean          0.0030
+std           0.0546
+min           0.0000
+25%           0.0000
+50%           0.0000
+75%           0.0000
+max           1.0000
+Analysis finished at Mon May 24 04:46:52 2021
+Total time elapsed: 4.0m:41.93s

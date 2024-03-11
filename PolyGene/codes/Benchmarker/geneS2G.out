@@ -1,0 +1,3371 @@
+> args <- commandArgs(trailingOnly = TRUE)
+> args <- commandArgs(trailingOnly = TRUE)
+> args <- commandArgs(trailingOnly = TRUE)
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.cov_SMOKING_STATUS"                                                                                   
+[4] "BRN"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.disease_CARDIOVASCULAR"                                                                               
+[4] "BRN"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.disease_ALLERGY_ECZEMA_DIAGNOSED"                                                                     
+[4] "BRN"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> > annot_name <- toString(args[3])
+> args <- commandArgs(trailingOnly = TRUE)
+args <- commandArgs(trailingOnly = TRUE)
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> print(args)
+[1]> print(args)
+ "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.disease_HYPERTENSION_DIAGNOSED"                                                                       
+[4] "BRN"                                                                                                           
+> genescore_dir <- toString(args[1])
+[1]> 
+>  "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   if(!dir.exists(paste0(bed_dir, "/", annot_name))){
+> 
+bed_dir <- toString(args[2])
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.disease_ASTHMA_DIAGNOSED"                                                                             > 
+annot_name <- toString(args[3])
+[4] "BRN"                                                                                                           
+> genescore_dir <- toString(args[1])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> bed_dir <- toString(args[2])
++   dir.create(paste0(bed_dir, "/", annot_name))
+> annot_name <- toString(args[3])
++ }
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> > 
+
+> > gene_scores = read.delim(score_file, header=F)
+gene_scores = read.delim(score_file, header=F)
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> scores = gene_scores[,2]
+> 
+> scores = gene_scores[,2]
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> names(scores) = gene_scores[,1]
+> > 
+
+> #out1 = ABC_I_bedgraph_calc(scores,
+> > gene_scores = read.delim(score_file, header=F)
+#                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> > 
+> names(scores) = gene_scores[,1]
+> #out1 = ABC_I_bedgraph_calc(scores,
+# out3 = Roadmap_GI_bedgraph_calc(scores,
+> > #                           output_cell = paste0(bed_dir, "/", annot_name),
+#                                 output_cell = paste0(bed_dir, "/", annot_name),
+> > #                           tissuename = enhancer_tissue,
+#                                 tissuename = enhancer_tissue,
+> > #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+#                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> > 
+
+> > # out2 = ABC_GI_bedgraph_calc(scores,
+#out4 = Roadmap_I_bedgraph_calc(scores,
+> > #                                 output_cell = paste0(bed_dir, "/", annot_name),
+#                                output_cell = paste0(bed_dir, "/", annot_name),
+> > #                                 tissuename = enhancer_tissue,
+#                                tissuename = enhancer_tissue,
+> > #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+#                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> > > 
+
+
+> > > #out1 = ABC_I_bedgraph_calc(scores,
+# out3 = Roadmap_GI_bedgraph_calc(scores,
+out5 = ABC_Road_GI_bedgraph_calc(scores,
+> > #                           output_cell = paste0(bed_dir, "/", annot_name),
+#                                 output_cell = paste0(bed_dir, "/", annot_name),
+> > #                           tissuename = enhancer_tissue,
+#                                 tissuename = enhancer_tissue,
+> > #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+#                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
++ > >                                  output_cell = paste0(bed_dir, "/", annot_name),
+
+
+> > #out4 = Roadmap_I_bedgraph_calc(scores,
+# out2 = ABC_GI_bedgraph_calc(scores,
+> > #                                output_cell = paste0(bed_dir, "/", annot_name),
+#                                 output_cell = paste0(bed_dir, "/", annot_name),
+> > #                                tissuename = enhancer_tissue,
+#                                 tissuename = enhancer_tissue,
+> + > #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+                                 tissuename = enhancer_tissue,
+#                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> > 
+
+> > out5 = ABC_Road_GI_bedgraph_calc(scores,
+# out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_celpaste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> > args <- commandArgs(trailingOnly = TRUE)
+args <- commandArgs(trailingOnly = TRUE)
+> print(args)
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2][1] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.blood_EOSINOPHIL_COUNT"                                                                               
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+ "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.blood_LYMPHOCYTE_COUNT"                                                                               
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> bed_dir <- toString(args[2])
+> enhancer_tissue <- toString(args[4])
+> annot_name <- toString(args[3])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> enhancer_tissue <- toString(args[4])
+> gene_scores = read.delim(score_file, header=F)
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enha> > args <- commandArgs(trailingOnly = TRUE)
+> print(args)
+print(args)
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.disease_T2D"                                                                                          
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+[1][1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+ "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   [2]
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean">  "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+
+bed_dir <- toString(args[2])
+[3][3] "UKB_460K.disease_THYROID_ANY_SELF_REP"                                                                          "UKB_460K.disease_HYPOTHYROIDISM_SELF_REP"                                                                      
+
+[4][4]>  "ALL"                                                                                                           annot_name <- toString(args[3])
+ "ALL"                                                                                                           
+
+> > genescore_dir <- toString(args[1])
+genescore_dir <- toString(args[1])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> bed_dir <- toString(args[2])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> gene_scores = read.delim(score_file, header=F)
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.disease_PSORIASIS"                                                                                    
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> > enhancer_tissue <- toString(args[4])
+
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> 
+> > gene_scores = read.delim(score_file, header=F)
+source("ALL_bedgraph_calc_tissue2.R")
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
+> + 
+  dir.create(paste0(bed_dir, "/", annot_name))
+> gene_scores = read.delim(score_file, header=F)
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".be> [1]args <- commandArgs(trailingOnly = TRUE)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.repro_AgeFirstBirth_Female"                                                                           
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+ "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.repro_MENARCHE_AGE"                                                                                   
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.repro_NumberChildrenEverBorn_Pooled"                                                                  
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> print(args)
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "UKB_460K.repro_MENOPAUSE_AGE"                                                                                  
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> + if(!dir.exists(paste0(bed_dir, "/", annot_name))){
+  dir.create(paste0(bed_dir, "/", annot_name))
++ }
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> scores = gene_scores[,2]
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> > 
+# out3 = Roadmap_GI_bedgraph_calc(scores,
+> > #                                 output_cell = paste0(bed_dir, "/", annot_name),
+scores = gene_scores[,2]
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
+> names(scores) = gene_scores[,1]
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+                           tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "PASS_IBD_deLange2017"                                                                                          
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> args <- commandArgs(trailingOnly = TRUE)
+> 
+> > gene_scores = read.delim(score_file, header=F)
+args <- commandArgs(trailingOnly = TRUE)
+> 
+> scores = gene_scores[,2]
+> print(args)
+> names(scores) = gene_scores[,1]
+[1]> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+>  "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   #                           tissuename = enhancer_tissue,
+
+[2]> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+>  "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+# out2 = ABC_GI_bedgraph_calc(scores,
+[3]>  "PASS_Type_1_Diabetes"                                                                                          #                                 output_cell = paste0(bed_dir, "/", annot_name),
+
+[4]>  "ALL"                                                                                                           
+#                                 tissuename = enhancer_tissue,
+> > genescore_dir <- toString(args[1])
+#                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
+> bed_dir <- toString(args[2])
++                                  tissuename = enhancer_tissue,
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> print(args)
+[1] "/n/groups/price/kushal/GeneRank/data/Gene_Scores/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"   
+[2] "/n/groups/price/kushal/singlecellLDSC/data/BEDFILES/Benchmarker/PolyGene_Predict_PPI_PoPS_justMAGMA_SAIGE_Mean"
+[3] "PASS_UC_deLange2017"                                                                                           
+[4] "ALL"                                                                                                           
+> genescore_dir <- toString(args[1])
+> bed_dir <- toString(args[2])
+> annot_name <- toString(args[3])
+> enhancer_tissue <- toString(args[4])
+> 
+> score_file = paste0(genescore_dir, "/", annot_name, ".txt")
+> gene_scores = read.delim(score_file, header=F)
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> if(!dir.exists(paste0(bed_dir, "/", annot_name))){
++   dir.create(paste0(bed_dir, "/", annot_name))
++ }
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> source("ALL_bedgraph_calc_tissue2.R")
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> gene_scores = read.delim(score_file, header=F)
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+> 
+> scores = gene_scores[,2]
+> names(scores) = gene_scores[,1]
+> 
+> #out1 = ABC_I_bedgraph_calc(scores,
+> #                           output_cell = paste0(bed_dir, "/", annot_name),
+> #                           tissuename = enhancer_tissue,
+> #                           output_bed = paste0("ABCI_", enhancer_tissue, ".bed"))
+> 
+> # out2 = ABC_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("ABCGI_", enhancer_tissue, ".bed"))
+> 
+> # out3 = Roadmap_GI_bedgraph_calc(scores,
+> #                                 output_cell = paste0(bed_dir, "/", annot_name),
+> #                                 tissuename = enhancer_tissue,
+> #                                 output_bed = paste0("Road_GI_", enhancer_tissue, ".bed"))
+> 
+> #out4 = Roadmap_I_bedgraph_calc(scores,
+> #                                output_cell = paste0(bed_dir, "/", annot_name),
+> #                                tissuename = enhancer_tissue,
+> #                                output_bed = paste0("Road_I_", enhancer_tissue, ".bed"))
+> 
+> out5 = ABC_Road_GI_bedgraph_calc(scores,
++                                  output_cell = paste0(bed_dir, "/", annot_name),
++                                  tissuename = enhancer_tissue,
++                                  output_bed = paste0("ABC_Road_GI_", enhancer_tissue, ".bed"))
+We processed file: E017 
+We processed file: E002 
+We processed file: E017 
+We processed file: E008 
+We processed file: E002 
+We processed file: E017 
+We processed file: E008 
+We processed file: E002 
+We processed file: E001 
+We processed file: E008 
+We processed file: E001 
+We processed file: E015 
+We processed file: E001 
+We processed file: E015 
+We processed file: E014 
+We processed file: E015 
+We processed file: E014 
+We processed file: E014 
+We processed file: E016 
+We processed file: E016 
+We processed file: E003 
+We processed file: E016 
+We processed file: E003 
+We processed file: E024 
+We processed file: E003 
+We processed file: E024 
+We processed file: E020 
+We processed file: E020 
+We processed file: E024 
+We processed file: E019 
+We processed file: E020 
+We processed file: E019 
+We processed file: E019 
+We processed file: E018 
+We processed file: E018 
+We processed file: E021 
+We processed file: E021 
+We processed file: E018 
+We processed file: E017 
+We processed file: E022 
+We processed file: E002 
+We processed file: E021 
+We processed file: E022 
+We processed file: E008 
+We processed file: E007 
+We processed file: E007 
+We processed file: E022 
+We processed file: E009 
+We processed file: E001 
+We processed file: E007 
+We processed file: E009 
+We processed file: E015 
+We processed file: E010 
+We processed file: E009 
+We processed file: E010 
+We processed file: E014 
+We processed file: E013 
+We processed file: E010 
+We processed file: E013 
+We processed file: E012 
+We processed file: E013 
+We processed file: E016 
+We processed file: E012 
+We processed file: E011 
+We processed file: E003 
+We processed file: E012 
+We processed file: E011 
+We processed file: E024 
+We processed file: E004 
+We processed file: E011 
+We processed file: E004 
+We processed file: E020 
+We processed file: E005 
+We processed file: E004 
+We processed file: E019 
+We processed file: E005 
+We processed file: E006 
+We processed file: E005 
+We processed file: E006 
+We processed file: E062 
+We processed file: E062 
+We processed file: E006 
+We processed file: E034 
+We processed file: E062 
+We processed file: E034 
+We processed file: E018 
+We processed file: E045 
+We processed file: E045 
+We processed file: E021 
+We processed file: E034 
+We processed file: E045 
+We processed file: E033 
+We processed file: E022 
+We processed file: E033 
+We processed file: E007 
+We processed file: E044 
+We processed file: E033 
+We processed file: E044 
+We processed file: E009 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  We processed file: E043 
+We processed file: E044 
+We processed file: E010 
+We processed file: E043 
+We processed file: E039 
+We processed file: E043 
+We processed file: E013 
+We processed file: E039 
+We processed file: E012 
+We processed file: E039 
+We processed file: E041 
+We processed file: E041 
+We processed file: E011 
+We processed file: E042 
+We processed file: E041 
+We processed file: E042 
+We processed file: E004 
+We processed file: E040 
+We processed file: E042 
+We processed file: E005 
+We processed file: E040 
+We processed file: E040 
+We processed file: E006 
+We processed file: E037 
+We processed file: E062 
+We processed file: E037 
+We processed file: E048 
+We processed file: E034 
+We processed file: E037 
+We processed file: E048 
+We processed file: E045 
+We processed file: E038 
+We processed file: E048 
+We processed file: E038 
+We processed file: E038 
+We processed file: E033 
+We processed file: E047 
+We processed file: E047 
+We processed file: E044 
+We processed file: E029 
+We processed file: E047 
+We processed file: E029 
+We processed file: E043 
+We processed file: E031 
+We processed file: E029 
+We processed file: E031 
+We processed file: E039 
+We processed file: E035 
+We processed file: E031 
+We processed file: E035 
+We processed file: E041 
+We processed file: E035 
+We processed file: E051 
+We processed file: E051 
+We processed file: E042 
+We processed file: E050 
+We processed file: E051 
+We processed file: E050 
+We processed file: E040 
+We processed file: E050 
+We processed file: E036 
+We processed file: E036 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E073 
+We processed file: E035 
+We processed file: E031 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E036 
+We processed file: E036 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E029 
+We processed file: E029 
+We processed file: E035 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E031 
+We processed file: E031 
+", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+le: E042 
+We processed file: E042 
+We processed file: E040 
+We processed file: E040 
+We processed file: E040 
+We processed file: E042 
+We processed file: E040 
+We processed file: E040 
+We processed file: E040 
+We processed file: E040 
+We processed file: E040 
+We processed file: E040 
+We processed file: E037 
+We processed file: E037 
+                                                                                                                                                                                                                                                                                                                                                                                                                                              We processed file: E072 
+We processed file: E072 
+We processed file: E072 
+We processed file: E072 
+We processed file: E072 
+We processed file: E067 
+We processed file: E067 
+We processed file: E067 
+We processed file: E067 
+We processed file: E072 
+We processed file: E067 
+We processed file: E073 
+We processed file: E073 
+We processed file: E073 
+We processed file: E073 
+We processed file: E067 
+We processed file: E073 
+We processed file: E070 
+We processed file: E070 
+We processed file: E070 
+We processed file: E070 
+We processed file: E073 
+We processed file: E070 
+We processed file: E082 
+We processed file: E082 
+We processed file: E082 
+We processed file: E082 
+We processed file: E070 
+We processed file: E082 
+We processed file: E081 
+We processed file: E081 
+We processed file: E081 
+We processed file: E082 
+We processed file: E081 
+We processed file: E081 
+We processed file: E125 
+We processed file: E125 
+We processed file: E125 
+We processed file: E081 
+We processed file: E125 
+We processed file: E125 
+We processed file: E125 
+                                                                                                                                                                                                                                                                                                                                                                                                      We processed file: E012 
+We processed file: E011 
+We processed file: E004 
+We processed file: E005 
+We processed file: E006 
+We processed file: E062 
+We processed file: E034 
+We processed file: E045 
+We processed file: E068 
+We processed file: E074 
+We processed file: E068 
+We processed file: E082 
+We processed file: E074 
+We processed file: E069 
+We processed file: E081 
+We processed file: E069 
+We processed file: E068 
+We processed file: E068 
+We processed file: E068 
+We processed file: E125 
+We processed file: E068 
+We processed file: E069 
+We processed file: E069 
+We processed file: E069 
+We processed file: E069 
+We processed file: E072 
+We processed file: E072 
+We processed file: E067 
+We processed file: EWe processed file: E038 
+We processed file: E048 
+We processed file: E038 
+We processed file: E048 
+We processed file: E048 
+We processed file: E047 
+We processed file: E038 
+We processed file: E038 
+We processed file: E047 
+We processed file: E038 
+We processed file: E047 
+We processed file: E029 
+We processed file: E029 
+We processed file: E047 
+We processed file: E047 
+We processed file: E029 
+We processed file: E031 
+We processed file: E047 
+We processed file: E031 
+We processed file: E031 
+We processed file: E029 
+We processed file: E029 
+We processed file: E035 
+We processed file: E029 
+We processed file: E031 
+We processed file: E035 
+We processed file: E031 
+We processed file: E035 
+We processed file: E031 
+We processed file: E051 
+We processed file: E035 
+We processed file: E035 
+We processed file: E051 
+We processed file: E035 
+We processed file: E051 
+We processed file: E050 
+We processed file: E081 
+We processed file: E081 
+We processed file: E125 
+We processed file: E125 
+We processed file: E125 
+We processed file: E125 
+We processed file: E125 
+We processed file: E125 
+We processed file: E125 
+                                                                                                                                                                                                                                                                                                                           We processed file: E037 
+We processed file: E037 
+We processed file: E037 
+We processed file: E037 
+We processed file: E037 
+We processed file: E037 
+We processed file: E048 
+We processed file: E048 
+We processed file: E048 
+We processed file: E048 
+We processed file: E037 
+We processed file: E048 
+We processed file: E048 
+We processed file: E048 
+We processed file: E048 
+We processed file: E038 
+We processed file: E038 
+We processed file: E038 
+We processed file: E038 
+We processed file: E048 
+We processed file: E038 
+We processed file: E038 
+We processed file: E038 
+We processed file: E038 
+We processed file: E038 
+We processed file: E047 
+We processed file: E047 
+We processed file: E047 
+We processed file: E047 
+We processed file: E047 
+We processed file: E047 
+We processed file: E047 
+We processed file: E047 
+We processed file: E029 
+We processed file: E029 
+We processed file: E029 
+We processed file: E047 
+We processed file: E029 
+We processed file: E029 
+We processed file: E029 
+We processed file: E029 
+We processed file: E029 
+We processed file: E031 
+We processed file: E031 
+We processed file: E031 
+We processed file: E031 
+We processed file: E029 
+We processed file: E031 
+We processed file: E031 
+                                                                                                                                                                                                                                                                              We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: EWe processed file: E051 
+We processed file: E050 
+We processed file: E036 
+We processed file: E035 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E051 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E050 
+We processed file: E036 
+We processed file: E036 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E036 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E046 
+We processed file: E046 
+We processed file: E032 
+We processed file: E046 
+We processed file: E046 
+We processed file: E046 
+We processed file: E030 
+We processed file: E046 
+We processed file: E030 
+We processed file: E030 
+We processed file: E030 
+We processed file: E030 
+We processed file: E030 
+We processed file: E046 
+We processed file: E030 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E026 
+We processed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+We processed file: E052 
+We processed file: E052 
+We processed file: E023 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E052 
+We processed file: E055We processedWe processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E036 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E032 
+We processed file: E046 
+We processed file: E046 
+We processed file: E046 
+We processed file: E046 
+We processed file: E030 
+We processed file: E046 
+We processed file: E030 
+We processed file: E030 
+We processed file: E046 
+We processed file: E030 
+We processed file: E030 
+We processed file: E030 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E049 
+We processed file: EWe processed file: E036 
+We processed file: E037 
+We processed file: E032 
+We processed file: E032 
+We processed file: E048 
+We processed file: E032 
+We processed file: E046 
+We processed file: E046 
+We processed file: E038 
+We processed file: E030 
+We processed file: E030 
+We processed file: E046 
+We processed file: E030 
+We processed file: E047 
+We processed file: E026 
+We processed file: E026 
+We processed file: E029 
+We processed file: E026 
+We processed file: E049 
+We processed file: E049 
+We processed file: E031 
+We processed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E035 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+We processed file: E051 
+We processed file: E023 
+We processed file: E052 
+We processed file: E052 
+We processed file: E050 
+We processed file: E052 
+We processed file: E055 
+We processed file: E055 
+We processed file: E036 
+We processed file: E056 
+We processed file: E055 
+We processed file: E056 
+We processed file: E056 
+We processed file: E032 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E061 
+We processed file: E061 
+We processed file: E046 
+We processed file: E061 
+We processed file: E030 
+We processed file: E057 
+We processed file: E057 
+We processed file: E057 
+We processed file: E058 
+We processed file: E058 
+We processed file: E058 
+We processed file: E028 
+We processed file: E028 
+We processed file: E026 
+We processed file: E028 
+We processed file: E027 
+We processed file: E027 
+We processed file: E049 
+We processed file: E054 
+We processed file: E054 
+We processed file: E027 
+We processed file: E025 
+We processed file: E054 
+We processed file: E053 
+We processed file: E053 
+We processed file: E023 
+We processed file: E112 
+We processed file: E053 
+We processed file: E112 
+We processed file: E112 
+We processed file: E052 
+We processed file: E093 
+We processed file: E093 
+053 
+We processed file: E053 
+We processed file: E053 
+We processed file: E112 
+We processed file: E053 
+We processed file: E112 
+We processed file: E112 
+We processed file: E053 
+We processed file: E053 
+We processed file: E112 
+We processed file: E112 
+We processed file: E112 
+We processed file: E093 
+We processed file: E093 
+We processed file: E093 
+We processed file: E093 
+ file: E054 
+We processed file: E054 
+We processed file: E054 
+We processed file: E054 
+We processed file: E028 
+We processed file: E057 
+We processed file: E058 
+We processed file: E058 
+We processed file: E053 
+We processed file: E053 
+We processed file: E053 
+We processed file: E053 
+We processed file: E027 
+We processed file: E028 
+We processed file: E112 
+We processed file: E112 
+We processed file: E112 
+We processed file: E112 
+We processed file: E028 
+essed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+, 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.tablWe processed file: E046 
+We processed file: E046 
+We processed file: E030 
+We processed file: E046 
+We processed file: E030 
+We processed file: E030 
+We processed file: E030 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+e, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+p = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E026 
+We processed file: E030 
+We processed file: E030 
+We processed file: E030 
+We processed file: E026 
+We processed file: E049 
+We processed file: E026 
+We processed file: E049 
+We processed file: E049 
+We processed file: E026 
+We processed file: E026 
+We processed file: E025 
+We processed file: E026 
+We processed file: E049 
+We processed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E023 
+We processed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+We processed file: E052 
+We processed file: E025 
+e, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E056 
+We processed file: E056 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E061 
+We processed file: E061 
+We processed file: E061 
+We processed file: E061 
+We processed file: E059 
+We processed file: E061 
+We processed file: E061 
+            output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E023 
+We processed file: E023 
+We processed file: E055 
+We processed file: E052 
+We processed file: E052 
+We processed file: E023 
+We processed file: E056 
+We processed file: E055 
+We processed file: E052 
+We processed file: E055 
+We processed file: E052 
+We processed file: E052 
+We processed file: E056 
+We processed file: E059 
+We processed file: E055 
+We processed file: E055 
+We processed file: E056 
+We processed file: E055 
+We processed file: E061 
+We processed file: E056 
+We processed file: E056 
+We processed file: E059 
+We processed file: E059 
+We processed file: E056 
+0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E026 
+We processed file: E026 
+We processed file: E026 
+We processed file: E049 
+We processed file: E049 
+We processed file: E026 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E049 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E025 
+We processed file: E023 
+We processed file: E025 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E023 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E052 
+We processed file: E055 
+We processed file: E055 
+We processed file: E052 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E055 
+We processed file: E056 
+We processed file: E056 
+We processed file: E055 
+We processed file: E056 
+We processed file: E056 
+We processed file: E056 
+We processed file: E056 
+We processed file: E056 
+We processed file: E056 
+We processed file: E056 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E059 
+We processed file: E061 
+We processed file: E061 
+We processed file: E059 
+We processed file: E061 
+We processed file: E061 
+We processed file: E061 
+We processed file: E061 
+We processed file: E061 
+We processed file: E061 
+We processed file: E061 
+We processed file: E057 
+We processed file: E057 
+We processed file: E057 
+We processed file: E057 
+We processed file: E057 
+We processed file: E057 
+We processed file: E057 
+We processed file: E057 
+We processed file: E058 
+We processed file: E058 
+We processed file: E057 
+We processed file: E058 
+We processed file: E058 
+We processed file: E058 
+We processed file: E058 
+We processed file: E058 
+We processed file: E058 
+We processed file: E028 
+We processed file: E028 
+We processed file: E058 
+We processed file: E028 
+We processed file: E028 
+We processed file: E028 
+We processed file: E028 
+We processed file: E028 
+We processed file: E069 
+We processed file: E069 
+We processed file: E069 
+We processed file: E069 
+We processed file: E093 
+We processed file: E074 
+We processed file: E093 
+We processed file: E072 
+We processed file: E072 
+We processed file: E072 
+We processed file: E072 
+We processed file: E071 
+We processed file: E068 
+We processed file: E067 
+We processed file: E071 
+We processed file: E067 
+We processed file: E067 
+We processed file: E067 
+We processed file: E074 
+We processed file: E074 
+We processed file: E073 
+We processed file: E069 
+We processed file: E073 
+We processed file: E073 
+We processed file: E073 
+We processed file: E068 
+We processed file: E070 
+We processed file: E068 
+We processed file: E070 
+We processed file: E072 
+We processed file: E070 
+We processed file: E070 
+We processed file: E069 
+We processed file: E082 
+We processed file: E082 
+We processed file: E067 
+We processed file: E082 
+We processed file: E069 
+We processed file: E082 
+We processed file: E081 
+We processed file: E072 
+We processed file: E081 
+We processed file: E081 
+We processed file: E073 
+We processed file: E081 
+We processed file: E072 
+We processed file: E067 
+We processed file: E070 
+We processed file: E067 
+We processed file: E070 
+We processed file: E070 
+We processed file: E073 
+We processed file: E082 
+We processed file: E082 
+We processed file: E070 
+We processed file: E070 
+We processed file: E082 
+We processed file: E082 
+We processed file: E070 
+We processed file: E082 
+We processed file: E081 
+We processed file: E081 
+We processed file: E082 
+We processed file: E081 
+We processed file: E081 
+We processed file: E082 
+We processed file: E081 
+We processed file: E081 
+We processed file: E063 
+We processed file: E063 
+We processed file: E081 
+We processed file: E063 
+We processed file: E100 
+We processed file: E063 
+                                                  We processed file: E100 
+We processed file: E063 
+We processed file: E063 
+We processed file: E100 
+We processed file: E100 
+We processed file: E063 
+We processed file: E100 
+We processed file: E108 
+We processed file: E108 
+We processed file: E100 
+We processed file: E100 
+We processed file: E108 
+We processed file: E107 
+We processed file: E108 
+We processed file: E108 
+We processed file: E107 
+We processed file: E108 
+We processed file: E089 
+We processed file: E107 
+We processed file: E107 
+We processed file: E108 
+We processed file: E107 
+We processed file: E089 
+We processed file: E107 
+We processed file: E090 
+We processed file: E089 
+We processed file: E107 
+We processed file: E089 
+We processed file: E089 
+We processed file: E090 
+We processed file: E089 
+We processed file: E090 
+We processed file: E090 
+We processed file: E089 
+We processed file: E083 
+We processed file: E090 
+We processed file: E090 
+We processed file: E083 
+We processed file: E104 
+We processed file: E090 
+We processed file: E083 
+We processed file: E083 
+We processed file: E104 
+We processed file: E083 
+We processed file: E095 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             We processed file: E083 
+We processed file: E104 
+We processed file: E104 
+We processed file: E083 
+We processed file: E104 
+We processed file: E095 
+We processed file: E105 
+We processed file: E104 
+We processed file: E104 
+We processed file: E095 
+We processed file: E095 
+We processed file: E065 
+We processed file: E095 
+We processed file: E105 
+We processed file: E095 
+We processed file: E095 
+We processed file: E105 
+We processed file: E105 
+We processed file: E065 
+We processed file: E078 
+We processed file: E105 
+We processed file: E105 
+We processed file: E065 
+We processed file: E065 
+We processed file: E076 
+We processed file: E105 
+We processed file: E065 
+We processed file: E065 
+We processed file: E078 
+We processed file: E065 
+We processed file: E103 
+We processed file: E078 
+We processed file: E078 
+We processed file: E076 
+We processed file: E078 
+We processed file: E078 
+We processed file: E111 
+We processed file: E076 
+We processed file: E076 
+We processed file: E078 
+We processed file: E076 
+We processed file: E103 
+We processed file: E076 
+We processed file: E092 
+                         We processed file: E103 
+We processed file: E103 
+We processed file: E076 
+We processed file: E103 
+We processed file: E111 
+We processed file: E103 
+We processed file: E085 
+We processed file: E111 
+We processed file: E111 
+We processed file: E103 
+We processed file: E092 
+We processed file: E111 
+We processed file: E111 
+We processed file: E092 
+We processed file: E092 
+We processed file: E111 
+We processed file: E084 
+We processed file: E092 
+We processed file: E092 
+We processed file: E085 
+We processed file: E109 
+We processed file: E092 
+We processed file: E085 
+We processed file: E085 
+We processed file: E085 
+We processed file: E106 
+We processed file: E085 
+We processed file: E084 
+We processed file: E085 
+We processed file: E084 
+We processed file: E084 
+We processed file: E075 
+We processed file: E109 
+We processed file: E084 
+We processed file: E109 
+We processed file: E077 
+We processed file: E077 
+We processed file: E077 
+We processed file: E079 
+We processed file: E079 
+We processed file: E079 
+We processed file: E079 
+We processed file: E079 
+We processed file: E079 
+We processed file: E094 
+We processed file: E094 
+We processed file: E094 
+We processed file: E094 
+We processed file: E094 
+We processed file: E094 
+We processed file: E099 
+We processed file: E099 
+We processed file: E099 
+We processed file: E099 
+We processed file: E099 
+We processed file: E099 
+                                                                                                                                                                                                                                                                                                                                                                                                                                         We processed file: E086 
+We processed file: E086 
+We processed file: E086 
+We processed file: E086 
+We processed file: E086 
+We processed file: E086 
+We processed file: E088 
+We processed file: E088 
+We processed file: E088 
+We processed file: E088 
+We processed file: E088 
+We processed file: E088 
+We processed file: E097 
+We processed file: E097 
+We processed file: E097 
+We processed file: E097 
+We processed file: E097 
+We processed file: E097 
+                                                                           We processed file: E087 
+We processed file: E087 
+We processed file: E087 
+We processed file: E087 
+We processed file: E087 
+We processed file: E087 
+We processed file: E080 
+We processed file: E080 
+We processed file: E080 
+We processed file: E080 
+We processed file: E080 
+We processed file: E080 
+We processed file: E091 
+We processed file: E091 
+                                                                                                                             We processed file: E091 
+We processed file: E091 
+We processed file: E091 
+We processed file: E091 
+We processed file: E066 
+We processed file: E066 
+We processed file: E066 
+We processed file: E066 
+We processed file: E066 
+We processed file: E066 
+We processed file: E098 
+We processed file: E098 
+We processed file:                                                          E098 
+We processed file: E098 
+We processed file: E098 
+We processed file: E098 
+We processed file: E096 
+We processed file: E096 
+We processed file: E096 
+We processed file: E096 
+We processed file: E096 
+We processed file: E096 
+We processed file: E113 
+We processed file: E113 
+We processed file: E113 
+We processed file: E113 
+We processed file: E113 
+We processed file: E113 
+We processed file: E114 
+We processed file: E114 
+We processed file: E114 
+We processed file: E114 
+We processed file: E114 
+We processed file: E114 
+We processed file: E115 
+We processed file: E115 
+We processed file: E115 
+We processed file: E115 
+We processed file: E115 
+We processed file: E115 
+We processed file: E116 
+We processed file: E116 
+We processed file: E116 
+We processed file: E116 
+We processed file: E116 
+We processed file: E116 
+We processed file: E117 
+We processed file: E117 
+We processed file: E117 
+We processed file: E117 
+We processed file: E117 
+We processed file: E117 
+We processed file: E118 
+We processed file: E118 
+We processed file: E118 
+We processed file: E118 
+We processed file: E118 
+We processed file: E118 
+We processed file: E119 
+We processed file: E119 
+We processed file: E119 
+We processed file: E119 
+We processed file: E119 
+We processed file: E119 
+We processed file: E120 
+We processed file: E120 
+We processed file: E120 
+We processed file: E120 
+We processed file: E120 
+We processed file: E120 
+We processed file: E121 
+We processed file: E121 
+We processed file: E121 
+We processed file: E121 
+We processed file: E121 
+We processed file: E121 
+We processed file: E122 
+We processed file: E122 
+We processed file: E122 
+We processed file: E122 
+We processed file: E122 
+We processed file: E122 
+We processed file: E123 
+We processed file:We processed file: E115 
+We processed file: E115 
+We processed file: E119 
+We processed file: E116 
+We processed file: E116 
+                                                                                                                                                                                                                                                                                                                                                              We processed file: E115 
+We processed file: E117 
+We processed file: E120 
+We processed file: E117 
+We processed file: E116 
+We processed file: E117 
+We processed file: E116 
+We processed file: E118 
+We processed file: E116 
+We processed file: E121 
+We processed file: E117 
+We processed file: E117 
+We processed file: E118 
+We processed file: E118 
+We processed file: E117 
+We processed file: E119 
+We processed file: E118 
+We processed file: E118 
+We processed file: E122 
+We processed file: E119 
+We processed file: E119 
+We processed file: E118 
+We processed file: E120 
+We processed file: E123 
+We processed file: E119 
+We processed file: E120 
+We processed file: E120 
+We processed file: E119 
+We processed file: E121 
+We processed file: E124 
+We processed file: E119 
+We processed file: E121 
+We processed file: E120 
+We processed file: E121 
+We processed file: E120 
+We processed file: E120 
+We processed file: E122 
+We processed file: E125 
+We processed file: E121 
+We processed file: E121 
+We processed file: E122 
+We processed file: E122 
+We processed file: E121 
+We processed file: E123 
+We processed file: E126 
+We processed file: E123 
+We processed file: E122 
+We processed file: E123 
+We processed file: E122 
+We processed file: E124 
+We processed file: E127 
+We processed file: E122 
+We processed file: E124 
+We processed file: E124 
+We processed file: E123 
+We processed file: E123 
+We processed file: E125 
+We processed file: E123 
+We processed file: E128 
+We processed file: E124 
+We processed file: E124 
+We processed file: E125 
+We processed file: E125 
+We processed file: E124 
+We processed file: E126 
+We processed file: E129 
+We processed file: E125 
+We processed file: E126 
+We processed file: E125 
+We processed file: E126 
+We processed file: E127 
+We processed file: E125 
+We processed file: E127 
+We processed file: E126 
+We processed file: E126 
+We processed file: E127 
+We processed file: E126 
+We processed file: E128 
+We processed file: E127 
+We processed file: E127 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  We processed file: E128 
+We processed file: E128 
+We processed file: E127 
+We processed file: E129 
+We processed file: E129 
+We processed file: E128 
+We processed file: E129 
+We processed file: E128 
+We processed file: E128 
+We processed file: E129 
+We processed file: E129 
+We processed file: E129 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    We processed file: E119 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       > 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              We processed file: E120 
+We processed file: E121 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              We processed file:We processed file:  E062 E062
+ 
+We processed file: E062 
+We processed file: E062 
+We processed file: E062 
+We processed file: E034 
+We processed file: E034 
+We processed file: E034 
+We processed file: E034 
+We processed file: E034 
+We processed file: E045 
+We processed file: E045 
+We processed file: E045 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+035 
+We processed file: E038 
+We processed file: E051 
+We processed file: E047 
+We processed file: E050 
+We processed file: E029 
+We processed file: E036 
+We processed file: E031 
+We processed file: E032 
+We processed file: E035 
+We processed file: E046 
+We processed file: E051 
+We processed file: E062 
+We processed file: E034 
+We processed file: E062 
+We processed file: E045 
+We processed file: E034 
+We processed file: E033 
+We processed file: E045 
+We processed file: E044 
+We processed file: E033 
+We processed file: E044 
+We processed file: E043 
+We processed file: E043 
+We processed file: E039 
+We processed file: E039 
+We processed file: E041 
+We processed file: E042 
+We processed file: E041 
+We processed file: E042 
+We processed file: E040 
+We processed file: E040 
+We processed file: E037 
+We processed file: E037 
+We processed file: E048 
+We processed file: E048 
+We processed file: E038 
+We processed file: E038 
+We processed file: E047 
+We processed file: E047 
+We processed file: E029 
+We processed file: E029 
+We processed file: E031 
+We processed file: E031 
+We processed file: E035 
+We processed file: E035 
+We processed file: E051 
+We processed file: E051 
+We processed file: E050 
+We processed file: E050 
+We processed file: E036 
+We processed file: E036 
+We processed file: E032 
+We processed file: E032 
+We processed file: E046 
+We processed file: E046 
+We processed file: E030 
+We processed file: E030 
+We processed file: E115 
+We processed file: E115 
+We processed file: E116 
+We processed file: E116 
+We processed file: E123 
+We processed file: E123 
+We processed file: E124 
+We processed file: E124 
+We processed file: E048 
+We processed file: E047 
+We processed file: E042 
+We processed file: E042 
+We processed file: E048 
+We processed file: E029 
+We processed file: E029 
+We processed file: E029 
+We processed file: E038 
+We processed file: E029 
+We processed file: E029 
+We processed file: E040 
+We processed file: E040 
+We processed file: E038 
+We processed file: E031 
+We processed file: E031 
+We processed file: E031 
+We processed file: E031 
+We processed file: E031 
+We processed file: E047 
+We processed file: E047 
+We processed file: E037 
+We processed file: E029 
+We processed file: E037 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E035 
+We processed file: E029 
+We processed file: E031 
+We processed file: E048 
+We processed file: E048 
+We processed file: E051 
+We processed file: E051 
+We processed file: E051 
+We processed file: E031 
+We processed file: E051 
+We processed file: E051 
+We processed file: E038 
+We processed file: E038 
+We processed file: E035 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E050 
+We processed file: E047 
+We processed file: E035 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> 
+> 
+> 
+> 
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> res[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+124 
+We processed file: E124 
+We processed file: E116 
+We processed file: E124 
+We processed file: E124 
+We processed file: E124 
+We processed file: E116 
+We processed file: E123 
+We processed file: E123 
+We processed file: E124 
+We processed file: E115 
+We processed file: E124 
+We processed file: E115 
+We processed file: E116 
+We processed file: E116 
+We processed file: E123 
+We processed file: E123 
+We processed file: E124 
+We processed file: E124 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+ ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+ E040 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                > 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  > df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annad_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", We processed file: E048 
+We processed file: E038 
+We processed file: E047 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E029 
+ed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+, header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E031 
+We processed file: E035 
+We processed file: E051 
+     output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt"> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E050 
+We processed file: E036 
+We processed file: E032 
+We processed file: E046 
+We processed file: E030 
+),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+We processed file: E115 
+We processed file: E116 
+We processed file: E123 
+We processed file: E124 
+(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
+> 
+> #out4 = ABC_Road_I_bedgraph_calc(scores,
+> #                               output_cell = paste0(bed_dir, "/", annot_name),
+> #                               tissuename = enhancer_tissue,
+> #                               output_bed = paste0("ABC_Road_I_", enhancer_tissue, ".bed"))
+> 
+> df = read.table("/n/groups/price/kushal/extras/Gene_100kb.txt", header=T)
+> df[which(df[,2] < 0), 2] = 0
+> score = gene_scores[match(df$gene, gene_scores[,1]), 2]
+> score[is.na(score)] = 0
+> 
+> temp = cbind.data.frame(df[,1:3], score)
+> temp2 = temp[which(temp$score != 0),]
+> write.table(temp2, file = paste0(bed_dir, "/", annot_name, "/", "100kb.bed"),
++             quote=F, sep = "\t", row.names=F, col.names=F)
+> 
+> 
+> 
+> 
