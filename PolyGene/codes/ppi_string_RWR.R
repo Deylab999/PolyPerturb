@@ -8,7 +8,7 @@
 #'                     score, thresholded below at 100.
 #' @results:  A list with two entries : 'score' : The prioritization score between 0 and 1 based on the PPI RWR. We recommend thresholding it
 #' to top X% genes. 'score_sd': Standard deviation of the score.
-#' @import dnet, igraph, STRINGdb
+#' @import dnet, igraph, here, data.table
 #'
 #'
 
@@ -20,10 +20,13 @@ ppi_string_RWR = function(gene_scores,
                    NUM_RUNS = 5,
                    NUM_SUBGENES=NULL){
 
+  library(here)
+  library(dplyr)
+  library(stringr)
   library(dnet)
+  library(data.table)
   library(igraph)
-  library(STRINGdb)
-
+  
   if(is.null(rownames(gene_scores))){
     warning("The gene_scores matrix row names were not provided. We assign them indices that may not match the entries in gg_edgelist
             genes.")
@@ -36,13 +39,30 @@ ppi_string_RWR = function(gene_scores,
 
 
   #############################  Create a String database graph ##############################################
-  string_db <- STRINGdb$new( version="11", species=9606,
-                             score_threshold=400, network_type="physical", input_directory="")
-  string_graph = string_db$get_graph()
-
-  #############################  Get all gene aliases for all proteins (may not be in graph)  #####################
-
-  gene_aliases = string_db$get_aliases(V(string_graph))
+  
+  #get the STRING to gene symbol mapping
+  string_alias <- str_c(here(),
+                        "/STRING/9606.protein.aliases.v12.0.txt.gz")
+  
+  alias_df <- fread(string_alias) %>%
+    filter(source == "BioMart_HUGO") %>%
+    select(string_id = `#string_protein_id`, symbol = alias) %>%
+    distinct()
+  
+  #create dataframe of all pairwise edges to be included in the graph
+  string_local <- str_c(here(),
+                        "/STRING/9606.protein.physical.links.v12.0.txt.gz")
+  
+  string_df <- fread(string_local) %>%
+    filter(combined_score >= 400) %>%
+    left_join(alias_df, by=c("protein1" = "string_id"), relationship = "many-to-many") %>%
+    rename(symbol1 = symbol) %>%
+    left_join(alias_df, by=c("protein2" = "string_id"), relationship = "many-to-many") %>%
+    rename(symbol2 = symbol) %>%
+    select(symbol1, symbol2, combined_score)
+    
+  #create an empty graph and fill it in from the dataframe
+  string_graph <- graph_from_data_frame(string_df, directed = FALSE)
 
   #####################  Subset the gene aliases to proteins that occur in the graph  #######################
 
