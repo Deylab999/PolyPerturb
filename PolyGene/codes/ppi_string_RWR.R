@@ -4,7 +4,7 @@
 #' @param edgelist_cutoff The cut-off on the edge connection strength. The default is 0.10 but the user is recommended to try other
 #'                        options
 #' @param NUM_RUNS The number of RWR iterations with random initialization based on gene scores.
-#' @param NUM_SUBGENES The number of genes to keep in each sub-sample per run for a gene score. If NULL, we take 50% of genes per gene
+#' @param NUM_SUBGENES The number of genes to keep in each sub-sample per run for a gene score. If NULL, we take 80% of genes per gene
 #'                     score, thresholded below at 100.
 #' @results:  A list with two entries : 'score' : The prioritization score between 0 and 1 based on the PPI RWR. We recommend thresholding it
 #' to top X% genes. 'score_sd': Standard deviation of the score.
@@ -14,30 +14,18 @@
 
 
 ppi_string_RWR = function(gene_scores,
-                   restart_prob=0.5,
-                   thresh_score=5,
+                   restart_prob = 0.5,
+                   thresh_score = 5,
                    edgelist_cutoff = 0.10,
                    NUM_RUNS = 5,
                    NUM_SUBGENES=NULL){
 
   library(here)
-  library(dplyr)
-  library(stringr)
+  library(tidyverse)
   library(dnet)
   library(data.table)
   library(igraph)
   
-  if(is.null(rownames(gene_scores))){
-    warning("The gene_scores matrix row names were not provided. We assign them indices that may not match the entries in gg_edgelist
-            genes.")
-    rownames(gene_scores) = 1:nrow(gene_scores)
-  }
-  if(is.null(colnames(gene_scores))){
-    warning("The names of gene sets in columns of gene_scores not provided. We assign them names V1, V2....")
-    colnames(gene_scores) = paste0("V", 1:ncol(gene_scores))
-  }
-
-
   #############################  Create a String database graph ##############################################
   
   #get the STRING to gene symbol mapping
@@ -65,70 +53,60 @@ ppi_string_RWR = function(gene_scores,
   string_graph <- graph_from_data_frame(string_df, directed = FALSE)
 
   #####################  Subset the gene aliases to proteins that occur in the graph  #######################
-
-  idx = which(!is.na(match(gene_aliases$STRING_id, as_ids(V(string_graph)))))
-  gene_aliases_2 = gene_aliases[idx, ]
-
-  common_genes = intersect(rownames(gene_scores), gene_aliases_2$alias)
-  gene_scores2 = gene_scores[match(common_genes, rownames(gene_scores)), ]
-
-  if(nrow(gene_scores2) < 100){
-    stop("The number of genes matched in the gene scores matrix is too few (<100). Either check for match discepancy between
-         gg_edgelist and gene_scores input genes or include more genes in the gene scores file.")
+  
+  ## TEST
+  gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZSTAT.txt"))
+  if("V1" %in% colnames(gene_scores)){
+    gene_scores <- gene_scores %>% rename("gene_symbol" = "V1")
+  }
+  
+  if(!'gene_symbol' %in% colnames(gene_scores)){
+    warning("A column named `gene_symbol` was not provided in the input gene_scores data.")
+  }
+  if(is.null(colnames(gene_scores))){
+    warning("The names of gene sets in columns of gene_scores not provided. We assign them names Pheno1, Pheno2....")
+    colnames(gene_scores) = c("gene_symbol", str_c("Pheno", 1:ncol(gene_scores)))
   }
 
-  if(is.null(NUM_SUBGENES)){
-    numgenes1 = floor(nrow(gene_scores2)*0.8)
-    if(numgenes1 < 100){
-      NUM_SUBGENES = 100
-    }else{
-      NUM_SUBGENES = numgenes1
-    }
+  common_genes = intersect(gene_scores$gene_symbol, V(string_graph)$name)
+  print(str_c("There are ",
+              length(common_genes),
+              " genes in common between the input gene scores and nodes in the STRING graph"))
+  
+  if(length(common_genes) < 100){
+    stop("The number of genes in the network matched in the gene scores matrix is too few (<100).
+    Either check for match discepancy between the network gene names and gene_scores input genes or
+    include more genes in the gene scores file.")
   }
-
-  priority_list = list()
-
-  for(num_iter in 1:NUM_RUNS){
-
+  
     #############  Create seed genes for RWR  method    ###################################
-
-    ll = list()
-    for(cc in 1:ncol(gene_scores2)){
-      tmp = gene_scores2[,cc]
-      tmp[tmp > thresh_score] = thresh_score
-      xx = (tmp+0.05)
-      probx = xx/sum(xx)
-      ll[[cc]] = sample(rownames(gene_scores2), NUM_SUBGENES, prob = probx, replace = T)
-    }
-
-    seed_genes = Reduce(union, ll)
-    all_seeds = matrix(0, length(seed_genes), length(ll))
-    for(cc in 1:ncol(all_seeds)){
-      all_seeds[match(ll[[cc]], seed_genes),cc] = 1
-    }
-    rownames(all_seeds) = seed_genes
-    colnames(all_seeds) = colnames(gene_scores2)
-
-    common_genes = intersect(rownames(all_seeds), gene_aliases_2$alias)
-    gene_aliases_3 = gene_aliases_2[which(!is.na(match(gene_aliases_2$alias, common_genes))),]
-    all_seeds2 = all_seeds[match(common_genes, rownames(all_seeds)),]
-
-    tmp_names = gene_aliases_3[match(rownames(all_seeds2), gene_aliases_3[,2]), 1]
-
-    mods_df = c()
-    for(mm in 1:ncol(all_seeds2)){
-      tmp = tapply(all_seeds2[,mm], tmp_names, mean)
-      mods_df = cbind(mods_df, as.numeric(tmp))
-      cats = names(tmp)
-    }
-    rownames(mods_df) = cats
-
-    all_seeds3 = mods_df
-
-
-    PTmatrix <- dRWR(g=string_graph, normalise="laplacian", setSeeds=all_seeds3,
+  
+  seed_genes_df <- gene_scores %>%
+    pivot_longer(!gene_symbol, names_to = "phenotype", values_to = "score") %>%
+    filter(gene_symbol %in% common_genes) %>%
+    group_by(phenotype) %>%
+    filter(score >= thresh_score) %>% #filter by a minimum threshold
+    top_n(NUM_SUBGENES, wt = score) %>% #filter to the top NUM_SUBGENES
+    mutate(personalization_vector = exp(score)/sum(exp(score))) %>% #SOFTMAX to weight seeds
+    ungroup() %>%
+    arrange(phenotype, desc(score))
+  
+  seed_mat <- seed_genes_df %>%
+    select(-score) %>%
+    pivot_wider(names_from = phenotype,
+                values_from = personalization_vector,
+                values_fill = 0)
+  tmp_rownames <- seed_mat$gene_symbol
+  seed_mat <- seed_mat %>% select(-gene_symbol) %>% as.matrix(seed_mat)
+  rownames(seed_mat) <- tmp_rownames
+  
+  #############  Run RWR    ################################################
+  PTmatrix <- dRWR(g=string_graph, normalise="laplacian", setSeeds=seed_mat,
                      restart=0.5, parallel=TRUE)
     rownames(PTmatrix) = as_ids(V(string_graph))
+    colnames(PTmatrix) = colnames(seed_mat)
+    
+  #############  Normalize RWR output    ##################################
 
     Step1_matrix = apply(PTmatrix, 2, function(x) {
       y = 1-ecdf(x)(x)
@@ -145,7 +123,7 @@ ppi_string_RWR = function(gene_scores,
     PR = (unscaled_score - min(unscaled_score))/(max(unscaled_score) - min(unscaled_score))
     names(PR) = as_ids(V(string_graph))
 
-    ids = match(rownames(all_seeds3), names(PR))
+    ids = match(rownames(seed_mat), names(PR))
     ids = ids[!is.na(ids)]
     PR2 = PR[ids]
     PR_gene_names = gene_aliases_3[match(names(PR2), gene_aliases_3[,1]), 2]
