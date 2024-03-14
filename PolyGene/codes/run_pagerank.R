@@ -11,25 +11,24 @@ source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
 #' @param graph iGraph object to run RWR on. Default is to re-compute STRING graph using create_string_graph()
 #' function, although the function is faster if a pre-created iGraph object is added.
 #' @param adjust_hub_genes Strong correction for bias towards prioritizing "hub" genes.
-#' When TRUE, subtract off the RWR values when the restart parameter is set to 0 and all overlapping genes
+#' When TRUE, subtract off the PageRank values when the restart parameter is set to 0 and all overlapping genes
 #' are used as seed genes. NOTE: This is very likely to result in negative values. FALSE by default.
 #' @results:  A list with two entries : 'score' : The prioritization score between 0 and 1 based on the PPI RWR.
 #' We recommend thresholding it
 #' to top X% genes. 'score_sd': Standard deviation of the score.
-#' @import dnet, igraph, here, data.table, tidyverse
+#' @import igraph, here, data.table, tidyverse
 #'
 
-run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZSTAT.txt")),
+run_pagerank = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZSTAT.txt")),
                    restart_prob = 0.5,
                    thresh_score = 5,
                    softmax = TRUE,
                    n_seed_geens=100,
                    adjust_hub_genes = FALSE,
                    graph = create_string_graph(edge_threshold = 400)){ 
-
+  
   library(here)
   library(tidyverse)
-  library(dnet)
   library(data.table)
   library(igraph)
   
@@ -51,7 +50,7 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
     warning("The names of gene sets in columns of gene_scores not provided. We assign them names Pheno1, Pheno2....")
     colnames(gene_scores) = c("gene_symbol", str_c("Pheno", 1:ncol(gene_scores)))
   }
-
+  
   common_genes = intersect(gene_scores$gene_symbol, V(string_graph)$name)
   print(str_c("There are ",
               length(common_genes),
@@ -63,7 +62,7 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
     include more genes in the gene scores file.")
   }
   
-    #############  Create seed genes for RWR  method    ###################################
+  #############  Create seed genes for RWR  method    ###################################
   
   seed_genes_df <- gene_scores %>%
     pivot_longer(!gene_symbol, names_to = "phenotype", values_to = "score") %>%
@@ -88,41 +87,34 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
   # have a corresponding row in the seed matrix
   all_genes <- V(string_graph)$name
   seed_mat <- rbind(seed_mat,
-                    matrix(0, nrow = length(all_genes) - nrow(seed_mat),
-                           ncol = ncol(seed_mat),
-                           dimnames = list(setdiff(all_genes, rownames(seed_mat)),
-                                           colnames(seed_mat))))
-  
+                matrix(0, nrow = length(all_genes) - nrow(seed_mat),
+                       ncol = ncol(seed_mat),
+                       dimnames = list(setdiff(all_genes, rownames(seed_mat)),
+                                       colnames(seed_mat))))
+
   #retain the ability to weight all seed genes equally
   if(softmax == FALSE){
     seed_mat <- ifelse(seed_mat != 0, 1, 0)
   }
   
-  #############  Run RWR    ################################################
-  set.seed(893)
-  PTmatrix <- dRWR(g=string_graph, normalise="laplacian", setSeeds=seed_mat,
-                     restart=restart_prob, parallel=TRUE)
-    rownames(PTmatrix) = as_ids(V(string_graph))
-    colnames(PTmatrix) = colnames(seed_mat)
+  #############  Run PageRank  #############################################
+  pr_matrix <- matrix(NA, nrow = nrow(seed_mat), ncol = ncol(seed_mat))
+  for (i in 1:ncol(seed_mat)) {
+    pr_scores <- page_rank(graph, damping = restart_prob, personalized = seed_mat[, i],
+                           weights=NA) #removes edge weights
     
-  if(adjust_hub_genes == TRUE){
-    all_genes_seeds <- matrix(rep(1/length(common_genes), length(common_genes)), 
-                              nrow = length(common_genes),
-                              dimnames = list(common_genes, NULL))
-    hub_genes_rwr <- dRWR(g=string_graph, normalise="laplacian", setSeeds=all_genes_seeds,
-                     restart=0, parallel=TRUE)
-    rownames(hub_genes_rwr) = as_ids(V(string_graph))
-    adjusted_PTmatrix <- apply(as.matrix(PTmatrix), 2,
-                               function(col) col - as.matrix(hub_genes_rwr))
-    adjusted_PTmatrix <- matrix(unlist(adjusted_PTmatrix),
-                                nrow = nrow(PTmatrix),
-                                ncol = ncol(PTmatrix), byrow = FALSE)
-    rownames(adjusted_PTmatrix) = as_ids(V(string_graph))
-    colnames(adjusted_PTmatrix) = colnames(seed_mat)
-    PTmatrix = adjusted_PTmatrix
+    #do hub gene adjustment if specified
+    if (adjust_hub_genes) {
+      hub_genes_pr <- page_rank(graph, damping = 0)
+      pr_scores$vector <- pr_scores$vector - hub_genes_pr$vector
+    }
+    
+    pr_matrix[, i] <- pr_scores$vector
   }
-    
-  out_rwr_df <- as.data.frame(as.matrix(PTmatrix)) %>%
+  rownames(pr_matrix) = names(pr_scores$vector)
+  colnames(pr_matrix) = colnames(seed_mat)
+  
+  out_pr_df <- as.data.frame(as.matrix(pr_matrix)) %>%
     rownames_to_column(var = "gene_symbol")
-  return(out_rwr_df)
+  return(out_pr_df)
 }
