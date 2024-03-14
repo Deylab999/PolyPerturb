@@ -4,7 +4,7 @@ library(tidyverse)
 source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
 
 #' @param gene_scores  matrix of gene scores with genes along the rows and gene sets along the columns
-#' @param restart_prob The probability of restart for RWR method (default is 0.5).
+#' @param damping_factor The damping factor, which controls diffusion in the graph. Some similarities to the restart probability in RWR.
 #' @param thresh_score An upper threshold for the scores in the gene score matrix.
 #' @param softmax When FALSE, all seed genes are weighted equally. When TRUE, seed genes are weighted by softmax normalization
 #' @param n_seed_geens The number of seed genes to use. (default is 100).
@@ -20,7 +20,7 @@ source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
 #'
 
 run_pagerank = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZSTAT.txt")),
-                   restart_prob = 0.5,
+                   damping_factor = 0.75,
                    thresh_score = 5,
                    softmax = TRUE,
                    n_seed_geens=100,
@@ -62,7 +62,7 @@ run_pagerank = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE
     include more genes in the gene scores file.")
   }
   
-  #############  Create seed genes for RWR  method    ###################################
+  #############  Create seed genes for PageRank  method    ###################################
   
   seed_genes_df <- gene_scores %>%
     pivot_longer(!gene_symbol, names_to = "phenotype", values_to = "score") %>%
@@ -98,21 +98,26 @@ run_pagerank = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE
   }
   
   #############  Run PageRank  #############################################
+  set.seed(893)
   pr_matrix <- matrix(NA, nrow = nrow(seed_mat), ncol = ncol(seed_mat))
   for (i in 1:ncol(seed_mat)) {
-    pr_scores <- page_rank(graph, damping = restart_prob, personalized = seed_mat[, i],
-                           weights=NA) #removes edge weights
+    pr_scores <- page_rank(graph,
+                           damping = damping_factor,
+                           personalized = seed_mat[, i],
+                           weights=NA, #removes edge weights
+                           )
     
     #do hub gene adjustment if specified
     if (adjust_hub_genes) {
-      hub_genes_pr <- page_rank(graph, damping = 0)
+      hub_genes_pr <- page_rank(graph, damping = damping_factor)
       pr_scores$vector <- pr_scores$vector - hub_genes_pr$vector
     }
     
     pr_matrix[, i] <- pr_scores$vector
+    row_names <- names(pr_scores$vector)
   }
-  rownames(pr_matrix) = names(pr_scores$vector)
   colnames(pr_matrix) = colnames(seed_mat)
+  rownames(pr_matrix) <- row_names
   
   out_pr_df <- as.data.frame(as.matrix(pr_matrix)) %>%
     rownames_to_column(var = "gene_symbol")
