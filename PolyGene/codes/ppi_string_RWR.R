@@ -45,8 +45,11 @@ create_string_graph = function(string_network_df_path = str_c(here(),
 #' @param thresh_score An upper threshold for the scores in the gene score matrix.
 #' @param softmax When FALSE, all seed genes are weighted equally. When TRUE, seed genes are weighted by softmax normalization
 #' @param n_seed_geens The number of seed genes to use. (default is 100).
-#' @param graph = iGraph object to run RWR on. Default is to re-compute STRING graph using create_string_graph()
+#' @param graph iGraph object to run RWR on. Default is to re-compute STRING graph using create_string_graph()
 #' function, although the function is faster if a pre-created iGraph object is added.
+#' @param adjust_hub_genes Strong correction for bias towards prioritizing "hub" genes.
+#' When TRUE, subtract off the RWR values when the restart parameter is set to 0 and all overlapping genes
+#' are used as seed genes. NOTE: This is very likely to result in negative values. FALSE by default.
 #' @results:  A list with two entries : 'score' : The prioritization score between 0 and 1 based on the PPI RWR.
 #' We recommend thresholding it
 #' to top X% genes. 'score_sd': Standard deviation of the score.
@@ -58,6 +61,7 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
                    thresh_score = 5,
                    softmax = TRUE,
                    n_seed_geens=100,
+                   adjust_hub_genes = FALSE,
                    graph = create_string_graph(edge_threshold = 400)){ 
 
   library(here)
@@ -103,7 +107,7 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
     filter(gene_symbol %in% common_genes) %>%
     group_by(phenotype) %>%
     filter(score >= thresh_score) %>% #filter by a minimum threshold
-    top_n(n_seed_geens, wt = score) %>% #filter to the top NUM_SUBGENES
+    top_n(n_seed_geens, wt = score) %>% #filter to the specified number of seed genes
     mutate(personalization_vector = exp(score)/sum(exp(score))) %>% #SOFTMAX to weight seeds
     ungroup() %>%
     arrange(phenotype, desc(score))
@@ -118,7 +122,7 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
   rownames(seed_mat) <- tmp_rownames
   
   #retain the ability to weight all seed genes equally
-  if(softmax==FALSE){
+  if(softmax == FALSE){
     seed_mat <- ifelse(seed_mat != 0, 1, 0)
   }
   
@@ -129,7 +133,25 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
     rownames(PTmatrix) = as_ids(V(string_graph))
     colnames(PTmatrix) = colnames(seed_mat)
     
+  if(adjust_hub_genes == TRUE){
+    all_genes_seeds <- matrix(rep(1/length(common_genes), length(common_genes)), 
+                              nrow = length(common_genes),
+                              dimnames = list(common_genes, NULL))
+    hub_genes_rwr <- dRWR(g=string_graph, normalise="laplacian", setSeeds=all_genes_seeds,
+                     restart=0, parallel=TRUE)
+    rownames(hub_genes_rwr) = as_ids(V(string_graph))
+    adjusted_PTmatrix <- apply(as.matrix(PTmatrix), 2,
+                               function(col) col - as.matrix(hub_genes_rwr))
+    adjusted_PTmatrix <- matrix(unlist(adjusted_PTmatrix),
+                                nrow = nrow(PTmatrix),
+                                ncol = ncol(PTmatrix), byrow = FALSE)
+    rownames(adjusted_PTmatrix) = as_ids(V(string_graph))
+    colnames(adjusted_PTmatrix) = colnames(seed_mat)
+    PTmatrix = adjusted_PTmatrix
+  }
+    
   out_rwr_df <- as.data.frame(as.matrix(PTmatrix)) %>%
     rownames_to_column(var = "gene_symbol")
   return(out_rwr_df)
 }
+
