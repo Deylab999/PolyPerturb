@@ -6,13 +6,6 @@ source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
 source(str_c(here(), "/PolyGene/codes/ppi_string_RWR.R"))
 source(str_c(here(), "/PolyGene/codes/run_pagerank.R"))
 
-#create some data
-graph <- create_string_graph(edge_threshold = 400)
-test_rwr <- run_RWR(graph=graph, softmax = TRUE, restart_prob = 0.5)
-
-#read in the ground truth data
-gt <- fread(str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.csv"))
-
 #' Compute sensitivity, specificity, precision, recall, Fisher's exact test p-value, and odds ratio.
 #'
 #' This function computes performance metrics including sensitivity, specificity, precision, recall,
@@ -25,17 +18,19 @@ gt <- fread(str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.cs
 #' between the gene and the phenotype and ground_truth==0 is a true negative relationship.
 #' @param thresholds A vector of thresholds for defining positive predictions.
 #'
-#' @return A data frame containing performance metrics for each phenotype at different thresholds.
-#'
-#' @examples
-#' compute_sensitivity_specificity()
+#' @return A lon-format data frame containing performance metrics for each phenotype at different thresholds.
+#' This dataframe contains everything required to reconstruct the confusion matrix, 
+#' sensitivity, specificity, precision, and recall at each threshold,
+#' as well as AUC with DeLong CIs (auc_lower_ci, auc_upper_ci) for each phenotype.
 #'
 #' @import tidyverse
 #' @import pROC
 #'
 compute_sensitivity_specificity <- function(data = test_rwr,
                                             ground_truth_df = gt,
-                                            thresholds = c(0, 0.01, 0.05, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99, 1)) {
+                                            thresholds = c(0, 0.01, 0.05,
+                                                           0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
+                                                           0.95, 0.99, 1)) {
   library(tidyverse)
   library(pROC)
   
@@ -57,29 +52,37 @@ compute_sensitivity_specificity <- function(data = test_rwr,
     #compute AUC for each phenotype
     auc_list <- list()
     for (p in unique(data_merged_with_gt$phenotype)) {
+      
       subset_df <- data_merged_with_gt %>%
         filter(phenotype==p)
       
-      roc_auc <- as.numeric(
-        auc(
-          roc(
-            data = subset_df,
-            response = "ground_truth",
-            predictor = "percentile_rank"
-          )
-        ))
-      auc_list[[p]] <- roc_auc
+      roc_obj <- invisible(roc(
+        data = subset_df,
+        response = "ground_truth",
+        predictor = "percentile_rank",
+        ci=TRUE
+      ))
+      
+      roc_auc <- as.numeric(auc(roc_obj))
+      auc_lower_ci <- roc_obj$ci[1]
+      auc_upper_ci <- roc_obj$ci[3]
+      
+      auc_list[[p]] <- c(roc_auc, auc_lower_ci, auc_upper_ci)
     }
-    auc_df <- data.frame(phenotype = names(auc_list), auc = unlist(auc_list))
     
-    #Create a dataframe with all the performance stats
+    auc_df <- data.frame(
+      phenotype = names(auc_list),
+      auc = unlist(lapply(auc_list, `[`, 1)),
+      auc_lower_ci = unlist(lapply(auc_list, `[`, 2)),
+      auc_upper_ci = unlist(lapply(auc_list, `[`, 3))
+    )
+    
+    #Create a dataframe to re-generate confusion matrix and plot ROC
     metric_summary <- data_merged_with_gt %>%
       group_by(phenotype) %>%
       mutate(predicted_label = ifelse(percentile_rank >= threshold, 1, 0)) %>%
       summarise(
-        n_ground_truths = n(),
-        TP_total = sum(ground_truth == 1),
-        TN_total = sum(ground_truth == 0),
+        n_ground_truth_positives = sum(ground_truth == 1),
         TP = sum(ground_truth == 1 & predicted_label == 1),
         TN = sum(ground_truth == 0 & predicted_label == 0),
         FP = sum(ground_truth == 0 & predicted_label == 1),
@@ -100,33 +103,44 @@ compute_sensitivity_specificity <- function(data = test_rwr,
   performance_metrics <- map_dfr(thresholds,
                                  ~compute_metrics(data = merged_data,
                                                   threshold = .x))
+  performance_metrics <- merged_data %>%
+    select(-gene_symbol, -percentile_rank, -ground_truth) %>%
+    distinct() %>%
+    left_join(performance_metrics, by="phenotype", relationship = "many-to-many")
+    
+  
   return(performance_metrics)
 }
 
+#' Run benchmarking starting from RWR with specified parameters
+#' 
+#' @param restart_prob The restart probability to use
+#' @param softmax TRUE/FALSE. If TRUE, use softmax normalization of seed genes.
+#' @param outfile_name Output filepath for benchmarking data
+#' @param ground_truth A data frame containing ground truth information.
+#' Mendelian ground truths are used by default (i.e. from freund_2018_monogenic_to_complex_ground_truth.csv)
+#' @param graph A graph object representing the network. Will create a STRING graph wtih edge_threshold of 400
+#' if an igraph object is not provided
+#' @return NULL. The function writes benchmark results to the specified CSV file in outfile_name.
 
-map_file <- fread(str_c(here(),"/data/mendelian_to_gwas_pheno_mapping.csv"))
 
-test_out <- compute_sensitivity_specificity()
-test_out <- test_out %>% left_join(map_file)
-
-test_summary <- test_out %>%
-  group_by(complex_trait) %>%
-  slice_max(auc) %>%
-  ungroup() %>%
-  group_by(mendelian_disease_group, threshold) %>%
-  #group_by(threshold) %>%
-  summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
-  #filter(threshold==0.90) %>%
-  ungroup() %>%
-  arrange(desc(auc))
-test_summary
+# Define a function to run compute_sensitivity_specificity()
+# across a grid of parameters
+run_benchmarking_with_parameters <- function(restart_prob,
+                                             softmax,
+                                             outfile_name = str_c(here(),
+                                                                  "/PolyGene/benchmarking/PolyNet/benchmark.csv"),
+                                             ground_truth = fread(str_c(here(),
+                                                                        "/data/freund_2018_monogenic_to_complex_ground_truth.csv")),
+                                             graph = create_string_graph(edge_threshold = 400)) {
   
-ggplot(test_summary, aes(x = 1 - specificity, y = sensitivity, color = mendelian_disease_group)) +
-#ggplot(test_summary, aes(x = 1 - specificity, y = sensitivity)) +
-  geom_line() +
-  geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
-  theme_minimal()
-
-
-
-
+  #run RWR with the set parameters
+  graph_gene_rankings <- run_RWR(restart_prob = restart_prob,
+                                 softmax = softmax,
+                                 graph = graph)
+  #calculate the benchmarks
+  result <- compute_sensitivity_specificity(data = graph_gene_rankings,
+                                            ground_truth_df = gt)
+  #write out the benchmarks to a .csv file
+  fwrite(result, file = outfile_name)
+}

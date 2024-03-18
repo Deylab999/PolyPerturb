@@ -31,6 +31,7 @@ mendelian_ground_truth <- function(mend_gt_map_file = str_c(here(), "/data/mende
       filter(phenotype == p) %>%
       mutate(ground_truth = 1)
     
+    #identify which group the phenotype belongs to
     group <- positive_df %>%
       pull(mendelian_disease_group) %>%
       unique()
@@ -38,6 +39,7 @@ mendelian_ground_truth <- function(mend_gt_map_file = str_c(here(), "/data/mende
     # get a list of all genes not represented as true positives
     # in the same phenotype group
     negative_genes <- mend_gt %>%
+      filter(!mendelian_disease_group == group) %>%
       filter(!gene_symbol %in% positive_df$gene_symbol) %>%
       pull(gene_symbol) %>%
       unique()
@@ -52,6 +54,10 @@ mendelian_ground_truth <- function(mend_gt_map_file = str_c(here(), "/data/mende
     
     gt_final <- rbind(gt_final, positive_df, negative_df)
   }
+  
+  gt_final <- gt_final %>%
+    left_join(mend_gt_map, relationship = "many-to-many") %>%
+    distinct()
   
   return(gt_final)
 }
