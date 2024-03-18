@@ -6,12 +6,10 @@
 #' @param mend_gt_map_file Character string specifying the file path for the Mendelian to GWAS phenotype mapping CSV file.
 #' @param mend_gt_genes_file Character string specifying the file path for the CSV file containing monogenic disease genes by
 #' Mendelian disease group from Freund et al (2018).
-#' @param n_neg Integer specifying the number of negative gene-phenotype pairs to sample for each phenotype (default is 500)
 #' @return A data frame containing the Mendelian ground truth mapping to use in sensitivity/specificity benchmarking.
 #'
 mendelian_ground_truth <- function(mend_gt_map_file = str_c(here(), "/data/mendelian_to_gwas_pheno_mapping.csv"),
-                                   mend_gt_genes_file = str_c(here(),"/data/freund_2018_monogenic_disease_genes.csv"),
-                                   n_neg = 500) {
+                                   mend_gt_genes_file = str_c(here(),"/data/freund_2018_monogenic_disease_genes.csv")) {
   
   require(data.table)
   require(dplyr)
@@ -37,15 +35,17 @@ mendelian_ground_truth <- function(mend_gt_map_file = str_c(here(), "/data/mende
       pull(mendelian_disease_group) %>%
       unique()
     
+    # get a list of all genes not represented as true positives
+    # in the same phenotype group
     negative_genes <- mend_gt %>%
       filter(!gene_symbol %in% positive_df$gene_symbol) %>%
       pull(gene_symbol) %>%
       unique()
     
-    set.seed(43)
+    #define true negatives as those genes that are in the negative_genes list
     negative_df <- bind_cols(
-      gene_symbol = sample(negative_genes, n_neg),
-      phenotype = rep(p, n_neg)
+      gene_symbol = negative_genes,
+      phenotype = rep(p, length(negative_genes))
     ) %>%
       mutate(mendelian_disease_group = group[1],
              ground_truth = 0)
