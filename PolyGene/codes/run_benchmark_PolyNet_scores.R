@@ -42,50 +42,6 @@ pmap(parameter_grid,
                                        graph = string_graph))
 
 
-# Create a function that reads the benchmarking output file from disc and then
-# summarizes the mean AUC overall and by phenotype.
-
-summarize_benchmarks <- function(restart_prob = 0.8,
-                                 softmax = TRUE,
-                                 n_seeds = 100,
-                                 adj_hub = FALSE,
-                                 grouping_column = "complex_trait", 
-                                 benchmark_filename = "/home/robertg1/PolyPerturb/PolyGene/benchmarking/PolyNet/Mendelian_Disease_Gene_Benchmarks_RWR_restartprob0.8_softmaxTRUE_nSeeds100_HubGeneAdjustFALSE.csv"){
-  
-  #read in the benchmarking file from disc
-  bm <- fread(benchmark_filename)
-  
-  #compute the overall summary
-  overall_summary <- bm %>%
-    group_by(threshold) %>%
-    summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
-    ungroup() %>%
-    mutate(complex_trait = "Overall",
-           restart_prob = restart_prob,
-           softmax = softmax,
-           n_seeds = n_seeds,
-           adj_hub = adj_hub) %>%
-    select(complex_trait, restart_prob, softmax, n_seeds, adj_hub, auc, auc_lower_ci, auc_upper_ci) %>%
-    distinct()
-  
-  #grouped summary
-  grouped_summary <- bm %>%
-    group_by(complex_trait, threshold) %>%
-    summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
-    ungroup() %>%
-    mutate(restart_prob = restart_prob,
-           softmax = softmax,
-           n_seeds = n_seeds,
-           adj_hub = adj_hub) %>%
-    select(complex_trait, restart_prob, softmax, n_seeds, adj_hub, auc, auc_lower_ci, auc_upper_ci) %>%
-    distinct() %>%
-    arrange(desc(auc))
-  
-  #combine
-  full_summary <- bind_rows(overall_summary, grouped_summary)
-  return(full_summary)
-}
-
 # Apply the benchmarking summarizing function to get a final dataframe
 out_summary <- pmap_df(parameter_grid,
                      ~summarize_benchmarks(restart_prob = ..1,
@@ -93,11 +49,9 @@ out_summary <- pmap_df(parameter_grid,
                                            n_seeds = ..3,
                                            adj_hub = ..4,
                                            benchmark_filename = ..5,
-                                           grouping_column = "complex_trait"))
-out_summary %>%
-  filter(complex_trait == "Overall") %>%
-  arrange(desc(auc))
+                                           grouping_column = "mendelian_disease_group"))
 
-out_summary %>%
-  filter(complex_trait == "Rheumatoid Arthritis") %>%
-  arrange(desc(auc))
+# Plot the impact of each of the parameters on AUC
+plots <- generate_auc_param_plots(data = out_summary,
+                                  params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                  phenotype_column = "mendelian_disease_group")

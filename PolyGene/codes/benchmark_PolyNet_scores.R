@@ -150,3 +150,195 @@ run_benchmarking_with_parameters <- function(restart_prob = 0.8,
   #write out the benchmarks to a .csv file
   fwrite(result, file = outfile_name)
 }
+
+
+#' Summarizes benchmark data from a given file.
+#'
+#' @param restart_prob Numeric, restart probability to use in RWR.
+#' 0=hub genes prioritized, 1=seed genes prioritized. Default is 0.5.
+#' @param softmax Logical, indicating whether SOFTMAX normalization of the seed nodes should be used
+#' prior to RWR. A way of weighting the seed genes.
+#' @param n_seeds Numeric, filter to n top genes to use as seeds in RWR
+#' @param adj_hub Logical, indicating whether to adjust for hub genes.
+#' @param grouping_column Character, a column to take the mean AUC over related phenotypes by.
+#' "complex_trait" by default, but another useful group is the "mendelian_disease_group" column.
+#' @param benchmark_filename Character, path to the benchmarking file output by run_benchmarking_with_parameters()
+#' @return A data frame containing summarized AUC benchmark results, both overall and split by group.
+#' @import data.table
+#' @import dplyr
+#' @importFrom purrr where
+#' @importFrom tidyr distinct
+#' @importFrom tibble as_tibble
+#' @importFrom dplyr across group_by mutate summarise ungroup select
+
+summarize_benchmarks <- function(restart_prob = 0.5,
+                                 softmax = TRUE,
+                                 n_seeds = 100,
+                                 adj_hub = FALSE,
+                                 grouping_column = "complex_trait", 
+                                 benchmark_filename = "/home/robertg1/PolyPerturb/PolyGene/benchmarking/PolyNet/Mendelian_Disease_Gene_Benchmarks_RWR_restartprob0.8_softmaxTRUE_nSeeds100_HubGeneAdjustFALSE.csv"){
+  
+  #read in the benchmarking file from disc
+  bm <- fread(benchmark_filename)
+  
+  #compute the overall summary
+  overall_summary <- bm %>%
+    group_by(threshold) %>%
+    summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
+    ungroup() %>%
+    mutate(!!grouping_column := "Overall",
+           restart_prob = restart_prob,
+           softmax = softmax,
+           n_seeds = n_seeds,
+           adj_hub = adj_hub) %>%
+    select(!!grouping_column, restart_prob, softmax, n_seeds, adj_hub, auc, auc_lower_ci, auc_upper_ci) %>%
+    distinct()
+  
+  #grouped summary
+  grouped_summary <- bm %>%
+    group_by(!!sym(grouping_column), threshold) %>%
+    summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
+    ungroup() %>%
+    mutate(restart_prob = restart_prob,
+           softmax = softmax,
+           n_seeds = n_seeds,
+           adj_hub = adj_hub) %>%
+    select(!!sym(grouping_column), restart_prob, softmax, n_seeds, adj_hub, auc, auc_lower_ci, auc_upper_ci) %>%
+    distinct() %>%
+    arrange(desc(auc))
+  
+  #combine
+  full_summary <- bind_rows(overall_summary, grouped_summary)
+  return(full_summary)
+  
+  #' Generate AUC vs Parameter Plots
+#'
+#' This function generates plots of AUC (Area Under the Curve) against specified parameters for different phenotypes.
+#'
+#' @param data A dataframe containing the AUC values along with the parameters and phenotype information.
+#' @param params A character vector specifying the names of the parameters to be plotted.
+#' @param phenotype_column The name of the column in \code{data} containing the phenotype information.
+#'
+#' @return A list containing the generated ggplot2 plots, with each plot corresponding to one of the specified parameters.
+#'
+#' @details This function iterates over each parameter specified in \code{params} and generates a separate plot for each one.
+#' The plots show the AUC values against the parameter values for different phenotypes.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage
+#' plots <- generate_auc_param_plots(data = ct_out_summary,
+#'                                   params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+#'                                   phenotype_column = "complex_trait")
+#'                                   }
+#'
+#' @import ggplot2
+#' @import dplyr
+#' @importFrom stringr str_c
+#' @importFrom rlang sym syms !!!
+
+generate_auc_param_plots <- function(data = ct_out_summary,
+                                     params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                     phenotype_column = "complex_trait") {
+  # Convert parameters to factors for better visualization
+  for(param in params) {
+    data[[param]] <- as.factor(data[[param]])
+  }
+  
+  # Initialize list to store plots
+  plots <- list()
+  
+  # Iterate over each parameter and generate plots
+  for(param in params) {
+    # Construct other_params by combining all parameters except the current one
+    other_params <- params[params != param]
+    tmp_plot_df <- data %>% mutate(other_params = str_c(!!sym(phenotype_column),
+                                                        !!!syms(other_params)))
+    
+    # Create plot
+    plot <- ggplot(tmp_plot_df,
+                   aes_string(x = param, y = "auc", color = phenotype_column)) +
+      geom_point() +
+      geom_line(aes(group = other_params)) +
+      labs(title = paste("AUC vs", param, "for Different Phenotypes"),
+           x = param, y = "AUC") +
+      theme_bw()
+    
+    # Store plot in the list
+    plots[[param]] <- plot
+  }
+  
+  # Return the list of plots
+  return(plots)
+}
+}
+
+#' Generate AUC vs Parameter Plots
+#'
+#' This function generates plots of AUC (Area Under the Curve) against specified parameters for different phenotypes.
+#'
+#' @param data A dataframe containing the AUC values along with the parameters and phenotype information.
+#' @param params A character vector specifying the names of the parameters to be plotted.
+#' @param phenotype_column The name of the column in \code{data} containing the phenotype information.
+#'
+#' @return A list containing the generated ggplot2 plots, with each plot corresponding to one of the specified parameters.
+#'
+#' @details This function iterates over each parameter specified in \code{params} and generates a separate plot for each one.
+#' The plots show the AUC values against the parameter values for different phenotypes.
+#'
+#' @examples
+#' \dontrun{
+#' # Example usage
+#' plots <- generate_auc_param_plots(data = ct_out_summary,
+#'                                   params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+#'                                   phenotype_column = "complex_trait")
+#'                                   }
+#'
+#' @import ggplot2
+#' @import dplyr
+#' @importFrom stringr str_c
+#' @importFrom rlang sym syms !!!
+
+generate_auc_param_plots <- function(data,
+                                     params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                     phenotype_column = "complex_trait") {
+  # Convert parameters to factors for better visualization
+  for(param in params) {
+    data[[param]] <- as.factor(data[[param]])
+  }
+  
+  # Initialize list to store plots
+  plots <- list()
+  
+  # Iterate over each parameter and generate plots
+  for(param in params) {
+    # Construct other_params by combining all parameters except the current one
+    other_params <- params[params != param]
+    tmp_plot_df <- data %>% mutate(other_params = str_c(!!sym(phenotype_column),
+                                                        !!!syms(other_params)))
+    
+    # Create plot
+    plot <- ggplot(data = filter(tmp_plot_df, !!sym(phenotype_column) != "Overall"),
+                   aes_string(x = param, y = "auc", color = phenotype_column)) +
+      geom_point() +
+      geom_line(aes(group = other_params)) +
+      labs(title = paste("AUC vs", param, "for Different Phenotypes"),
+           x = param, y = "AUC") +
+      theme_bw()
+    
+    # Add thicker black line if complex_trait is Overall
+    if ("Overall" %in% unique(tmp_plot_df[[phenotype_column]])) {
+      plot <- plot +
+        geom_point(data = filter(tmp_plot_df, !!sym(phenotype_column) == "Overall"),
+                   color = "black", size = 4) +
+        geom_line(data = filter(tmp_plot_df, !!sym(phenotype_column) == "Overall"),
+                  aes(group = other_params), color = "black", size = 1.5)
+    }
+    
+    # Store plot in the list
+    plots[[param]] <- plot
+  }
+  
+  # Return the list of plots
+  return(plots)
+}
