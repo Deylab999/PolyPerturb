@@ -55,3 +55,24 @@ out_summary <- pmap_df(parameter_grid,
 plots <- generate_auc_param_plots(data = out_summary,
                                   params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
                                   phenotype_column = "mendelian_disease_group")
+plots[[1]]
+
+plots_restart_0.8 <- generate_auc_param_plots(data = filter(out_summary, restart_prob==0.8),
+                                              params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                              phenotype_column = "mendelian_disease_group")
+plots_restart_0.8[[4]]
+
+plots_softmaxTRUE <- generate_auc_param_plots(data = filter(out_summary, restart_prob==0.8 & softmax==TRUE),
+                                              params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                              phenotype_column = "mendelian_disease_group")
+plots_softmaxTRUE[[3]]
+
+plots_restart_nseeds500 <- generate_auc_param_plots(data = filter(out_summary, restart_prob==0.8 & n_seeds==500),
+                                              params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                              phenotype_column = "mendelian_disease_group")
+plots_restart_nseeds500[[2]]
+
+plots_best_param <- generate_auc_param_plots(data = filter(out_summary, softmax==TRUE & n_seeds==500 & adj_hub==FALSE),
+                                                    params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                                    phenotype_column = "mendelian_disease_group")
+plots_best_param[[1]]
