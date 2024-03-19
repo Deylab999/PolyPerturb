@@ -130,6 +130,37 @@ pops_bm_summary <- summarize_benchmarks(restart_prob = 0,
   mutate(algo = "POPs_MAGMA_0kb.txt") %>%
   select(-restart_prob, -softmax, -n_seeds, -adj_hub)
 
+#run old PolyGene score benchmarking
+old_PolyNet <- fread(str_c(here(),
+                        "/data/original_output/PPI_STRING_MAGMA.txt")) %>%
+  rename(gene_symbol = V1) %>%
+  select(gene_symbol, any_of(overlapping_phenos)) %>%
+  filter(gene_symbol %in% overlapping_genes)
+
+old_pn_bm <- compute_sensitivity_specificity(data = old_PolyNet,
+                                           ground_truth_df = gt,
+                                           thresholds = c(0, 0.01, 0.05,
+                                                          0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
+                                                          0.95, 0.99, 1))
+fwrite(old_pn_bm, str_c(here(),
+                      "/PolyGene/benchmarking/PolyNet/",
+                      "Mendelian_Benchmarks_",
+                      "old_PPI_STRING_MAGMA.txt"))
+
+old_pn_bm_summary <- summarize_benchmarks(restart_prob = 0,
+                                        softmax = 0,
+                                        n_seeds = 0,
+                                        adj_hub = 0,
+                                        benchmark_filename = str_c(here(),
+                                                                   "/PolyGene/benchmarking/PolyNet/",
+                                                                   "Mendelian_Benchmarks_",
+                                                                   "old_PPI_STRING_MAGMA.txt"),
+                                        grouping_column = "mendelian_disease_group") %>%
+  mutate(algo = "old_PPI_STRING_MAGMA.txt") %>%
+  select(-restart_prob, -softmax, -n_seeds, -adj_hub)
+
+
+####combine everything together
 best_params_pops_benchmark <- rwr_best_param %>%
   filter(phenotype %in% overlapping_phenos) %>%
   group_by(!!sym("mendelian_disease_group"), threshold) %>%
@@ -137,7 +168,7 @@ best_params_pops_benchmark <- rwr_best_param %>%
   ungroup() %>%
   mutate(algo = "PolyNet_STRING_PPI") %>%
   select(all_of(colnames(pops_bm_summary))) %>%
-  bind_rows(., pops_bm_summary) 
+  bind_rows(., pops_bm_summary, old_pn_bm_summary) 
 
 overall_best <- best_params_pops_benchmark %>%
   filter(algo == "PolyNet_STRING_PPI") %>%
