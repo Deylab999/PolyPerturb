@@ -109,7 +109,6 @@ compute_sensitivity_specificity <- function(data,
     distinct() %>%
     left_join(performance_metrics, by="phenotype", relationship = "many-to-many")
     
-  
   return(performance_metrics)
 }
 

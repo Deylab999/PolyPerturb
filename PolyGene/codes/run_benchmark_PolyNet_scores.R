@@ -76,3 +76,94 @@ plots_best_param <- generate_auc_param_plots(data = filter(out_summary, softmax=
                                                     params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
                                                     phenotype_column = "mendelian_disease_group")
 plots_best_param[[1]]
+
+##########################################################################################
+######################run benchmarking on PoPs scores &  #################################
+################## compare to STRING PolyNet with suggested params  ######################
+##########################################################################################
+
+# read in the PoPs data
+pops_raw <- fread(str_c(here(),
+                        "/data/POPs_MAGMA_0kb.txt")) %>%
+  rename(gene_symbol = V1)
+
+# read in the PolyNet scores for the best set of paramters
+rwr_best_param <- fread(str_c("~/PolyPerturb/PolyGene/benchmarking/PolyNet/",
+                        "Mendelian_Benchmarks_RWR_",
+                        "restartprob0.8_softmaxTRUE_nSeeds500_HubGeneAdjustFALSE.csv"))
+
+
+#find overlap of genes and phenotypes in pops vs. rwr
+overlapping_phenos <- intersect(colnames(pops_raw),
+                                unique(rwr_best_param$phenotype))
+
+#only use overlapping genes between STRING and PoPs to benchmark
+string_graph <- create_string_graph(edge_threshold = 400)
+overlapping_genes <- intersect(as.character(V(string_graph)$name),
+                               pops_raw$gene_symbol)
+
+#filter pops data to overlapping genes and phenos
+pops_raw <- pops_raw %>%
+  select(gene_symbol, all_of(overlapping_phenos)) %>%
+  filter(gene_symbol %in% overlapping_genes)
+
+#run pops benchmarking
+pops_bm <- compute_sensitivity_specificity(data = pops_raw,
+                                             ground_truth_df = gt,
+                                             thresholds = c(0, 0.01, 0.05,
+                                                            0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
+                                                            0.95, 0.99, 1))
+fwrite(pops_bm, str_c(here(),
+                      "/PolyGene/benchmarking/PolyNet/",
+                      "Mendelian_Benchmarks_",
+                      "POPs_MAGMA_0kb.txt"))
+
+pops_bm_summary <- summarize_benchmarks(restart_prob = 0,
+                                        softmax = 0,
+                                        n_seeds = 0,
+                                        adj_hub = 0,
+                                        benchmark_filename = str_c(here(),
+                                                                   "/PolyGene/benchmarking/PolyNet/",
+                                                                   "Mendelian_Benchmarks_",
+                                                                   "POPs_MAGMA_0kb.txt"),
+                                        grouping_column = "mendelian_disease_group") %>%
+  mutate(algo = "POPs_MAGMA_0kb.txt") %>%
+  select(-restart_prob, -softmax, -n_seeds, -adj_hub)
+
+best_params_pops_benchmark <- rwr_best_param %>%
+  filter(phenotype %in% overlapping_phenos) %>%
+  group_by(!!sym("mendelian_disease_group"), threshold) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
+  ungroup() %>%
+  mutate(algo = "PolyNet_STRING_PPI") %>%
+  select(all_of(colnames(pops_bm_summary))) %>%
+  bind_rows(., pops_bm_summary) 
+
+overall_best <- best_params_pops_benchmark %>%
+  filter(algo == "PolyNet_STRING_PPI") %>%
+  group_by(algo) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
+  ungroup() %>%
+  mutate(mendelian_disease_group = "Overall")
+
+best_params_pops_benchmark <- best_params_pops_benchmark %>%
+  bind_rows(overall_best ) %>%
+  arrange(mendelian_disease_group)
+
+#plot the comparison
+ggplot(best_params_pops_benchmark,
+       aes(x = mendelian_disease_group, y = auc, color = algo)) +
+  geom_point(position = position_dodge(width = 0.2)) +
+  geom_errorbar(aes(ymin = auc_lower_ci, ymax = auc_upper_ci), 
+                position = position_dodge(width = 0.2), 
+                width = 0.2) +
+  labs(title = "Compare AUC for PoPs and Best Parameters of STRING PolyNet",
+       x = "Mendelian Phenotype Group",
+       y = "AUC") +
+  scale_color_discrete(name = "Algorithm") +
+  theme_bw() +
+  scale_y_continuous(breaks = seq(0.5, 1, by = 0.05), labels = seq(0.5, 1, by = 0.05)) +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1))
+
+
+
