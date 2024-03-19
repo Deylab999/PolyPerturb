@@ -7,7 +7,7 @@ source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
 #' @param restart_prob The probability of restart for RWR method (default is 0.5).
 #' @param thresh_score An upper threshold for the scores in the gene score matrix.
 #' @param softmax When FALSE, all seed genes are weighted equally. When TRUE, seed genes are weighted by softmax normalization
-#' @param n_seed_geens The number of seed genes to use. (default is 100).
+#' @param n_seed_genes The number of seed genes to use. (default is 100).
 #' @param graph iGraph object to run RWR on. Default is to re-compute STRING graph using create_string_graph()
 #' function, although the function is faster if a pre-created iGraph object is added.
 #' @param adjust_hub_genes Strong correction for bias towards prioritizing "hub" genes.
@@ -23,7 +23,7 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
                    restart_prob = 0.5,
                    thresh_score = 5,
                    softmax = TRUE,
-                   n_seed_geens=100,
+                   n_seed_genes=100,
                    adjust_hub_genes = FALSE,
                    graph = create_string_graph(edge_threshold = 400)){ 
 
@@ -70,7 +70,7 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
     filter(gene_symbol %in% common_genes) %>%
     group_by(phenotype) %>%
     filter(score >= thresh_score) %>% #filter by a minimum threshold
-    top_n(n_seed_geens, wt = score) %>% #filter to the specified number of seed genes
+    top_n(n_seed_genes, wt = score) %>% #filter to the specified number of seed genes
     mutate(personalization_vector = exp(score)/sum(exp(score))) %>% #SOFTMAX to weight seeds
     ungroup() %>%
     arrange(phenotype, desc(score))

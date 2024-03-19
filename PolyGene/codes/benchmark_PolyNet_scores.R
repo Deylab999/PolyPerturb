@@ -26,8 +26,8 @@ source(str_c(here(), "/PolyGene/codes/run_pagerank.R"))
 #' @import tidyverse
 #' @import pROC
 #'
-compute_sensitivity_specificity <- function(data = test_rwr,
-                                            ground_truth_df = gt,
+compute_sensitivity_specificity <- function(data,
+                                            ground_truth_df,
                                             thresholds = c(0, 0.01, 0.05,
                                                            0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
                                                            0.95, 0.99, 1)) {
@@ -60,7 +60,8 @@ compute_sensitivity_specificity <- function(data = test_rwr,
         data = subset_df,
         response = "ground_truth",
         predictor = "percentile_rank",
-        ci=TRUE
+        ci=TRUE, 
+        direction = "<"
       ))
       
       roc_auc <- as.numeric(auc(roc_obj))
@@ -126,8 +127,10 @@ compute_sensitivity_specificity <- function(data = test_rwr,
 
 # Define a function to run compute_sensitivity_specificity()
 # across a grid of parameters
-run_benchmarking_with_parameters <- function(restart_prob,
-                                             softmax,
+run_benchmarking_with_parameters <- function(restart_prob = 0.8,
+                                             softmax = TRUE,
+                                             n_seeds = 100,
+                                             adj_hub = FALSE,
                                              outfile_name = str_c(here(),
                                                                   "/PolyGene/benchmarking/PolyNet/benchmark.csv"),
                                              ground_truth = fread(str_c(here(),
@@ -137,7 +140,10 @@ run_benchmarking_with_parameters <- function(restart_prob,
   #run RWR with the set parameters
   graph_gene_rankings <- run_RWR(restart_prob = restart_prob,
                                  softmax = softmax,
-                                 graph = graph)
+                                 n_seed_genes = n_seeds,
+                                 adjust_hub_genes = adj_hub,
+                                 graph = graph,
+                                 )
   #calculate the benchmarks
   result <- compute_sensitivity_specificity(data = graph_gene_rankings,
                                             ground_truth_df = gt)
