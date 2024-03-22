@@ -13,19 +13,20 @@ gt <- fread(str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.cs
 string_graph <- create_string_graph(edge_threshold = 400)
 
 # Define the grid of parameters
-parameter_grid <- expand.grid(restart_prob = c(0, 0.2, 0.5, 0.8, 1),
+parameter_grid <- expand.grid(restart_prob = c(0, 0.2, 0.5, 0.7, 0.8, 0.9, 1),
                               softmax = c(TRUE, FALSE),
-                              n_seeds = c(100, 200, 500, 1000),
+                              n_seeds = c(NA, 100, 500),
                               adj_hub = c(TRUE, FALSE)) %>%
   mutate(outfile_filename=str_c(here(),
                                 "/PolyGene/benchmarking/PolyNet/",
-                                "Mendelian_Benchmarks_",
-                                "RWR_restartprob",
+                                "Mendelian_Freund_2018_Benchmarking/",
+                                "MAGMA_0kb/STRING_PolyNet/",
+                                "RWR_restart",
                                 restart_prob,
                                 "_softmax",
                                 softmax,
                                 "_nSeeds",
-                                n_seeds,
+                                str_replace_na(n_seeds, "NA"),
                                 "_HubGeneAdjust",
                                 adj_hub,
                                 ".csv"))
@@ -51,6 +52,8 @@ out_summary <- pmap_df(parameter_grid,
                                            benchmark_filename = ..5,
                                            grouping_column = "mendelian_disease_group"))
 
+
+#####PLOTS######
 # Plot the impact of each of the parameters on AUC
 plots <- generate_auc_param_plots(data = out_summary,
                                   params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),

@@ -96,14 +96,20 @@ compute_sensitivity_specificity <- function(data,
       roc_auc <- as.numeric(auc(roc_obj))
       auc_lower_ci <- roc_obj$ci[1]
       auc_upper_ci <- roc_obj$ci[3]
-      auc_list[[p]] <- c(roc_auc, auc_lower_ci, auc_upper_ci)
+      
+      # Estimate standard error
+      z_value <- qnorm(0.975)  # for 95% confidence interval
+      auc_se <- (auc_upper_ci - auc_lower_ci) / (2 * z_value)
+      
+      auc_list[[p]] <- c(roc_auc, auc_lower_ci, auc_upper_ci, auc_se)
     }
     
     auc_df <- data.frame(
       phenotype = names(auc_list),
       auc = unlist(lapply(auc_list, `[`, 1)),
       auc_lower_ci = unlist(lapply(auc_list, `[`, 2)),
-      auc_upper_ci = unlist(lapply(auc_list, `[`, 3))
+      auc_upper_ci = unlist(lapply(auc_list, `[`, 3)),
+      auc_se = unlist(lapply(auc_list, `[`, 4))
     )
     
     # Merge AUC and contingency table data
@@ -182,7 +188,7 @@ run_benchmarking_with_parameters <- function(restart_prob = 0.8,
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr across group_by mutate summarise ungroup select
 
-summarize_benchmarks <- function(restart_prob = 0.5,
+summarize_benchmarks <- function(restart_prob = 0.8,
                                  softmax = TRUE,
                                  n_seeds = 100,
                                  adj_hub = FALSE,
@@ -222,7 +228,7 @@ summarize_benchmarks <- function(restart_prob = 0.5,
   full_summary <- bind_rows(overall_summary, grouped_summary)
   return(full_summary)
   
-  #' Generate AUC vs Parameter Plots
+#' Generate AUC vs Parameter Plots
 #'
 #' This function generates plots of AUC (Area Under the Curve) against specified parameters for different phenotypes.
 #'
