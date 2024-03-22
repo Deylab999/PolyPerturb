@@ -17,6 +17,8 @@ source(str_c(here(), "/PolyGene/codes/run_pagerank.R"))
 #' and "ground_truth" labels. ground_truth==1 is a true positive relationship
 #' between the gene and the phenotype and ground_truth==0 is a true negative relationship.
 #' @param thresholds A vector of thresholds for defining positive predictions.
+#' These are the percentile of PolyNet score (e.g. threshold=0.9 means that the top 10% of
+#' genes by PolyNet score are evaluated)
 #'
 #' @return A lon-format data frame containing performance metrics for each phenotype at different thresholds.
 #' This dataframe contains everything required to reconstruct the confusion matrix, 
@@ -48,26 +50,52 @@ compute_sensitivity_specificity <- function(data,
   
   # Helper function to compute sensitivity, specificity, precision, and recall at many thresholds
   compute_metrics <- function(data_merged_with_gt = merged_data, threshold = 0.9) {
+    contingency_tables <- data_merged_with_gt %>%
+      group_by(phenotype) %>%
+      mutate(predicted_label = ifelse(percentile_rank >= threshold, 1, 0)) %>%
+      summarise(
+        n_ground_truth_positives = sum(ground_truth == 1),
+        n_ground_truth_negatives = sum(ground_truth == 0),
+        n_predicted_positives = sum(predicted_label == 1),
+        n_predicted_negatives = sum(predicted_label == 0),
+        n_true_positives = sum(ground_truth == 1 & predicted_label == 1),
+        n_true_negatives = sum(ground_truth == 0 & predicted_label == 0),
+        n_false_positives = sum(ground_truth == 0 & predicted_label == 1),
+        n_false_negatives = sum(ground_truth == 1 & predicted_label == 0),
+        sensitivity = sum(ground_truth == 1 & predicted_label == 1) / sum(ground_truth == 1),
+        specificity = sum(ground_truth == 0 & predicted_label == 0) / sum(ground_truth == 0),
+        precision = sum(ground_truth == 1 & predicted_label == 1) / sum(predicted_label == 1),
+        recall = sensitivity,
+        n_genes_above_thresh = n_predicted_positives,
+        n_genes_total = sum(predicted_label == 0 | predicted_label == 1)
+      ) %>%
+      ungroup() %>%
+      mutate(
+        # Compute Fisher's exact test p-value and odds ratio
+        fisher_p_value = mapply(function(tp, fp, tn, fn) {
+          fisher.test(matrix(c(tp, fp, fn, tn), nrow = 2))$p.value
+        }, n_true_positives, n_false_positives, n_true_negatives, n_false_negatives),
+        odds_ratio = mapply(function(tp, fp, tn, fn) {
+          (tp / (tp + fn)) / (fp / (fp + tn))
+        }, n_true_positives, n_false_positives, n_true_negatives, n_false_negatives)
+      ) %>%
+      mutate(threshold := threshold)
     
-    #compute AUC for each phenotype
+    # Compute AUC for each phenotype
     auc_list <- list()
     for (p in unique(data_merged_with_gt$phenotype)) {
-      
       subset_df <- data_merged_with_gt %>%
-        filter(phenotype==p)
-      
+        filter(phenotype == p)
       roc_obj <- invisible(roc(
         data = subset_df,
         response = "ground_truth",
         predictor = "percentile_rank",
-        ci=TRUE, 
+        ci = TRUE,
         direction = "<"
       ))
-      
       roc_auc <- as.numeric(auc(roc_obj))
       auc_lower_ci <- roc_obj$ci[1]
       auc_upper_ci <- roc_obj$ci[3]
-      
       auc_list[[p]] <- c(roc_auc, auc_lower_ci, auc_upper_ci)
     }
     
@@ -78,24 +106,8 @@ compute_sensitivity_specificity <- function(data,
       auc_upper_ci = unlist(lapply(auc_list, `[`, 3))
     )
     
-    #Create a dataframe to re-generate confusion matrix and plot ROC
-    metric_summary <- data_merged_with_gt %>%
-      group_by(phenotype) %>%
-      mutate(predicted_label = ifelse(percentile_rank >= threshold, 1, 0)) %>%
-      summarise(
-        n_ground_truth_positives = sum(ground_truth == 1),
-        TP = sum(ground_truth == 1 & predicted_label == 1),
-        TN = sum(ground_truth == 0 & predicted_label == 0),
-        FP = sum(ground_truth == 0 & predicted_label == 1),
-        FN = sum(ground_truth == 1 & predicted_label == 0),
-        sensitivity = sum(ground_truth == 1 & predicted_label == 1) / sum(ground_truth == 1),
-        specificity = sum(ground_truth == 0 & predicted_label == 0) / sum(ground_truth == 0),
-        precision = sum(ground_truth == 1 & predicted_label == 1) / sum(predicted_label == 1),
-        recall = sensitivity
-      ) %>%
-      ungroup() %>%
-      mutate(threshold = threshold) %>%
-      left_join(auc_df, by="phenotype")
+    # Merge AUC and contingency table data
+    metric_summary <- left_join(contingency_tables, auc_df, by = "phenotype")
     
     return(metric_summary)
   }

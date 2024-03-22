@@ -4,10 +4,12 @@ library(tidyverse)
 source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
 
 #' @param gene_scores  matrix of gene scores with genes along the rows and gene sets along the columns
-#' @param restart_prob The probability of restart for RWR method (default is 0.5).
-#' @param thresh_score An upper threshold for the scores in the gene score matrix.
+#' @param restart_prob The probability of restart for RWR method (default is 0.8, which appears to 
+#' perform well for STRING).
+#' @param thresh_score A minimum score required for a gene to be considered a seed gene
 #' @param softmax When FALSE, all seed genes are weighted equally. When TRUE, seed genes are weighted by softmax normalization
-#' @param n_seed_genes The number of seed genes to use. (default is 100).
+#' @param n_seed_genes The number of seed genes to use (default is NA, which means all genes are used as seeds. If
+#' softmax=TRUE, then softmax weighting will be applied across all genes.)
 #' @param graph iGraph object to run RWR on. Default is to re-compute STRING graph using create_string_graph()
 #' function, although the function is faster if a pre-created iGraph object is added.
 #' @param adjust_hub_genes Strong correction for bias towards prioritizing "hub" genes.
@@ -20,10 +22,10 @@ source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
 #'
 
 run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZSTAT.txt")),
-                   restart_prob = 0.5,
-                   thresh_score = 5,
+                   restart_prob = 0.8,
+                   thresh_score = NA,
                    softmax = TRUE,
-                   n_seed_genes=100,
+                   n_seed_genes = NA,
                    adjust_hub_genes = FALSE,
                    graph = create_string_graph(edge_threshold = 400)){ 
 
@@ -67,11 +69,28 @@ run_RWR = function(gene_scores = fread(str_c(here(), "/data/MAGMA_v108_GENE_0_ZS
   
   seed_genes_df <- gene_scores %>%
     pivot_longer(!gene_symbol, names_to = "phenotype", values_to = "score") %>%
-    filter(gene_symbol %in% common_genes) %>%
+    filter(gene_symbol %in% common_genes)
+    
+  if(!is.na(thresh_score)) {
+    seed_genes_df <- seed_genes_df %>%
+      filter(score >= thresh_score) #filter by a minimum score threshold
+  }
+  
+  if(!is.na(n_seed_genes)) {
+    seed_genes_df <- seed_genes_df %>%
+      group_by(phenotype) %>%
+      top_n(n_seed_genes, wt = score) %>% #filter to the specified number of seed genes
+      ungroup()
+  }
+
+  seed_genes_df <- seed_genes_df %>%
     group_by(phenotype) %>%
-    filter(score >= thresh_score) %>% #filter by a minimum threshold
-    top_n(n_seed_genes, wt = score) %>% #filter to the specified number of seed genes
-    mutate(personalization_vector = exp(score)/sum(exp(score))) %>% #SOFTMAX to weight seeds
+    mutate(min_score = min(score, na.rm=TRUE)) %>% #ensure the score is always positive
+    mutate(score = ifelse(min_score < 0, 
+                          score + abs(min_score),
+                          score)) %>%
+    select(-min_score) %>%
+    mutate(personalization_vector = exp(score)/sum(exp(score), na.rm=TRUE)) %>% #SOFTMAX to weight seeds
     ungroup() %>%
     arrange(phenotype, desc(score))
   
