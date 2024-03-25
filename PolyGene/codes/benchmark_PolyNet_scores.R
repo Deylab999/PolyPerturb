@@ -177,8 +177,10 @@ run_benchmarking_with_parameters <- function(restart_prob = 0.8,
 #' prior to RWR. A way of weighting the seed genes.
 #' @param n_seeds Numeric, filter to n top genes to use as seeds in RWR
 #' @param adj_hub Logical, indicating whether to adjust for hub genes.
-#' @param grouping_column Character, a column to take the mean AUC over related phenotypes by.
-#' "complex_trait" by default, but another useful group is the "mendelian_disease_group" column.
+#' @param percentile_threshold Numeric, the threshold at which to evaluate the enrichment ORs.
+#' Default is 0.95, corresponding to calculating enrichment ORs at genes in the top 5% of the score.
+#' @param grouping_column Character, a column to summarize the AUCs and ORs by. This is done
+#' byt inverse variance weighting. "mendelian_disease_group" by default, but another useful group is the "complex_trait" column.
 #' @param benchmark_filename Character, path to the benchmarking file output by run_benchmarking_with_parameters()
 #' @return A data frame containing summarized AUC benchmark results, both overall and split by group.
 #' @import data.table
@@ -188,45 +190,99 @@ run_benchmarking_with_parameters <- function(restart_prob = 0.8,
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr across group_by mutate summarise ungroup select
 
-summarize_benchmarks <- function(restart_prob = 0.8,
+summarize_benchmarks <- function(restart_prob = 0.7,
                                  softmax = TRUE,
-                                 n_seeds = 100,
+                                 n_seeds = 500,
                                  adj_hub = FALSE,
-                                 grouping_column = "complex_trait", 
-                                 benchmark_filename = "/home/robertg1/PolyPerturb/PolyGene/benchmarking/PolyNet/Mendelian_Disease_Gene_Benchmarks_RWR_restartprob0.8_softmaxTRUE_nSeeds100_HubGeneAdjustFALSE.csv"){
+                                 percentile_threshold = 0.95, #look at the top 5% of prioritized genes
+                                 grouping_column = "mendelian_disease_group", 
+                                 benchmark_filename = str_c(here(),
+                                                            "/PolyGene/benchmarking/PolyNet/",
+                                                            "Mendelian_Freund_2018_Benchmarking/",
+                                                            "MAGMA_0kb/STRING_PolyNet/",
+                                                            "RWR_restart0.7_softmaxTRUE_nSeeds500_HubGeneAdjustFALSE.csv")){
   
   #read in the benchmarking file from disc
   bm <- fread(benchmark_filename)
   
-  #compute the overall summary
-  overall_summary <- bm %>%
-    group_by(threshold) %>%
-    summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
-    ungroup() %>%
-    mutate(!!grouping_column := "Overall",
-           restart_prob = restart_prob,
-           softmax = softmax,
-           n_seeds = n_seeds,
-           adj_hub = adj_hub) %>%
-    select(!!grouping_column, restart_prob, softmax, n_seeds, adj_hub, auc, auc_lower_ci, auc_upper_ci) %>%
-    distinct()
+  #add Fisher's exact SE
+  bm <- bm %>%
+    mutate(log_odds_ratio = log(odds_ratio),
+           log_odds_ratio_se = sqrt(1 / (n_true_positives + n_false_positives) + 
+                                      1 / (n_false_positives + n_true_negatives) + 
+                                      1 / (n_true_positives + n_false_negatives) + 
+                                      1 / (n_false_negatives + n_true_negatives)))
+  
+  
+  #drop the columns to reconstruct the confusion matrix to simplify the output
+  cols_to_keep <- data.frame(colnames = colnames(bm)) %>%
+    filter(!str_detect(colnames, "^n_") |
+             (colnames %in% c("n_genes_above_thresh",
+                              "n_true_positives",
+                              "n_genes_total"))) %>%
+    pull(colnames)
   
   #grouped summary
   grouped_summary <- bm %>%
-    group_by(!!sym(grouping_column), threshold) %>%
-    summarise(across(where(is.numeric), mean, na.rm = TRUE)) %>%
-    ungroup() %>%
-    mutate(restart_prob = restart_prob,
-           softmax = softmax,
-           n_seeds = n_seeds,
-           adj_hub = adj_hub) %>%
-    select(!!sym(grouping_column), restart_prob, softmax, n_seeds, adj_hub, auc, auc_lower_ci, auc_upper_ci) %>%
+    filter(threshold == percentile_threshold) %>%
     distinct() %>%
-    arrange(desc(auc))
+    group_by(!!sym(grouping_column), threshold) %>%
+    summarize(auc = weighted.mean(auc, 1 / auc_se^2),
+              auc_se = sqrt(1 / sum(1 / auc_se^2)),
+              fisher_or = exp(weighted.mean(log_odds_ratio, 1 / log_odds_ratio_se^2)),
+              fisher_se = sqrt(1 / sum(1 / log_odds_ratio_se^2))) %>%
+    ungroup() %>%
+    transmute(
+      !!sym(grouping_column),
+      threshold,
+      restart_prob = restart_prob,
+      softmax = softmax,
+      n_seeds = n_seeds,
+      adj_hub = adj_hub,
+      fisher_or,
+      fisher_se,
+      fisher_or_lower_ci = exp(log(fisher_or) - 1.96 * fisher_se),
+      fisher_or_upper_ci = exp(log(fisher_or) + 1.96 * fisher_se),
+      fisher_p_value = 2 * pnorm(-abs(log(fisher_or) / fisher_se)),
+      auc,
+      auc_se,
+      auc_lower_ci = auc - 1.96 * auc_se,
+      auc_upper_ci = auc + 1.96 * auc_se
+    ) %>%
+    arrange(desc(fisher_or))
   
+  #compute the overall summary for each phenotype
+  # at the selected percentile threshold
+  overall_summary <- grouped_summary %>%
+    group_by(threshold) %>%
+    summarize(auc = weighted.mean(auc, 1 / auc_se^2),
+              auc_se = sqrt(1 / sum(1 / auc_se^2)),
+              fisher_or = exp(weighted.mean(log(fisher_or), 1 / fisher_se^2)),
+              fisher_se = sqrt(1 / sum(1 / fisher_se^2))) %>%
+    ungroup() %>%
+    transmute(
+      !!grouping_column := "Overall",
+      threshold,
+      restart_prob = restart_prob,
+      softmax = softmax,
+      n_seeds = n_seeds,
+      adj_hub = adj_hub,
+      fisher_or,
+      fisher_se,
+      fisher_or_lower_ci = exp(log(fisher_or) - 1.96 * fisher_se),
+      fisher_or_upper_ci = exp(log(fisher_or) + 1.96 * fisher_se),
+      fisher_p_value = 2 * pnorm(-abs(log(fisher_or) / fisher_se)),
+      auc,
+      auc_se,
+      auc_lower_ci = auc - 1.96 * auc_se,
+      auc_upper_ci = auc + 1.96 * auc_se
+    ) %>%
+    arrange(desc(fisher_or))
+    
   #combine
   full_summary <- bind_rows(overall_summary, grouped_summary)
   return(full_summary)
+}
   
 #' Generate AUC vs Parameter Plots
 #'
@@ -287,7 +343,6 @@ generate_auc_param_plots <- function(data = ct_out_summary,
   
   # Return the list of plots
   return(plots)
-}
 }
 
 #' Generate AUC vs Parameter Plots

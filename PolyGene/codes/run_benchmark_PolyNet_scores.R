@@ -12,7 +12,7 @@ gt <- fread(str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.cs
 #create the STRING graph to use for RWR
 string_graph <- create_string_graph(edge_threshold = 400)
 
-# Define the grid of parameters
+# Define the grid of parameters to generate results for
 parameter_grid <- expand.grid(restart_prob = c(0, 0.2, 0.5, 0.7, 0.8, 0.9, 1),
                               softmax = c(TRUE, FALSE),
                               n_seeds = c(NA, 100, 500),
@@ -51,6 +51,9 @@ out_summary <- pmap_df(parameter_grid,
                                            adj_hub = ..4,
                                            benchmark_filename = ..5,
                                            grouping_column = "mendelian_disease_group"))
+out_summary <- out_summary %>%
+  mutate(n_seeds = str_replace_na(n_seeds, "14000")) %>%
+  mutate(n_seeds = as.numeric(n_seeds))
 
 
 #####PLOTS######
@@ -91,9 +94,19 @@ pops_raw <- fread(str_c(here(),
   rename(gene_symbol = V1)
 
 # read in the PolyNet scores for the best set of paramters
-rwr_best_param <- fread(str_c("~/PolyPerturb/PolyGene/benchmarking/PolyNet/",
-                        "Mendelian_Benchmarks_RWR_",
-                        "restartprob0.8_softmaxTRUE_nSeeds500_HubGeneAdjustFALSE.csv"))
+rwr_best_param <- fread(str_c(here(),
+                                    "/PolyGene/benchmarking/PolyNet/",
+                                    "Mendelian_Freund_2018_Benchmarking/",
+                                    "MAGMA_0kb/STRING_PolyNet/",
+                                    "RWR_restart",
+                                    "0.7",
+                                    "_softmax",
+                                    "TRUE",
+                                    "_nSeeds",
+                                    "500",
+                                    "_HubGeneAdjust",
+                                    "FALSE",
+                                    ".csv"))
 
 
 #find overlap of genes and phenotypes in pops vs. rwr
@@ -117,9 +130,10 @@ pops_bm <- compute_sensitivity_specificity(data = pops_raw,
                                                             0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
                                                             0.95, 0.99, 1))
 fwrite(pops_bm, str_c(here(),
-                      "/PolyGene/benchmarking/PolyNet/",
-                      "Mendelian_Benchmarks_",
-                      "POPs_MAGMA_0kb.txt"))
+                            "/PolyGene/benchmarking/PolyNet/",
+                            "Mendelian_Freund_2018_Benchmarking/",
+                            "MAGMA_0kb/",
+                            "POPs_MAGMA_0kb.txt"))
 
 pops_bm_summary <- summarize_benchmarks(restart_prob = 0,
                                         softmax = 0,
@@ -127,7 +141,8 @@ pops_bm_summary <- summarize_benchmarks(restart_prob = 0,
                                         adj_hub = 0,
                                         benchmark_filename = str_c(here(),
                                                                    "/PolyGene/benchmarking/PolyNet/",
-                                                                   "Mendelian_Benchmarks_",
+                                                                   "Mendelian_Freund_2018_Benchmarking/",
+                                                                   "MAGMA_0kb/",
                                                                    "POPs_MAGMA_0kb.txt"),
                                         grouping_column = "mendelian_disease_group") %>%
   mutate(algo = "POPs_MAGMA_0kb.txt") %>%
@@ -198,6 +213,4 @@ ggplot(best_params_pops_benchmark,
   theme_bw() +
   scale_y_continuous(breaks = seq(0.5, 1, by = 0.05), labels = seq(0.5, 1, by = 0.05)) +
   theme(axis.text.x = element_text(angle = 75, hjust = 1))
-
-
 
