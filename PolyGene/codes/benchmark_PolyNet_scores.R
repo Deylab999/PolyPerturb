@@ -352,7 +352,8 @@ generate_auc_param_plots <- function(data = ct_out_summary,
 #' @param data A dataframe containing the AUC values along with the parameters and phenotype information.
 #' @param params A character vector specifying the names of the parameters to be plotted.
 #' @param phenotype_column The name of the column in \code{data} containing the phenotype information.
-#'
+#' @param  y_variable The name of the metric column name you'd like plottet on the Y-axis. "auc" is default, but "fisher_or" can
+#' also be useful.
 #' @return A list containing the generated ggplot2 plots, with each plot corresponding to one of the specified parameters.
 #'
 #' @details This function iterates over each parameter specified in \code{params} and generates a separate plot for each one.
@@ -371,9 +372,10 @@ generate_auc_param_plots <- function(data = ct_out_summary,
 #' @importFrom stringr str_c
 #' @importFrom rlang sym syms !!!
 
-generate_auc_param_plots <- function(data,
-                                     params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
-                                     phenotype_column = "complex_trait") {
+generate_param_plots <- function(data,
+                                 y_variable = "auc",
+                                 params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                 phenotype_column = "complex_trait") {
   # Convert parameters to factors for better visualization
   for(param in params) {
     data[[param]] <- as.factor(data[[param]])
@@ -391,11 +393,11 @@ generate_auc_param_plots <- function(data,
     
     # Create plot
     plot <- ggplot(data = filter(tmp_plot_df, !!sym(phenotype_column) != "Overall"),
-                   aes_string(x = param, y = "auc", color = phenotype_column)) +
+                   aes_string(x = param, y = y_variable, color = phenotype_column)) +
       geom_point() +
       geom_line(aes(group = other_params)) +
-      labs(title = paste("AUC vs", param, "for Different Phenotypes"),
-           x = param, y = "AUC") +
+      labs(title = paste(y_variable, "vs", param, "for Different Phenotypes"),
+           x = param, y = y_variable) +
       theme_bw()
     
     # Add thicker black line if complex_trait is Overall

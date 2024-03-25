@@ -33,14 +33,15 @@ parameter_grid <- expand.grid(restart_prob = c(0, 0.2, 0.5, 0.7, 0.8, 0.9, 1),
 
 
 # Apply the function to each combination of parameters specified in the parameter_grid df
-pmap(parameter_grid,
-     ~run_benchmarking_with_parameters(restart_prob = ..1,
-                                       softmax = ..2,
-                                       n_seeds = ..3,
-                                       adj_hub = ..4,
-                                       outfile_name = ..5,
-                                       ground_truth = gt,
-                                       graph = string_graph))
+# NOTE: THIS TAKES ~2 HOURS WITH CURRENT PARAM GRID
+#pmap(parameter_grid,
+#     ~run_benchmarking_with_parameters(restart_prob = ..1,
+#                                       softmax = ..2,
+#                                       n_seeds = ..3,
+#                                       adj_hub = ..4,
+#                                       outfile_name = ..5,
+#                                       ground_truth = gt,
+#                                       graph = string_graph))
 
 
 # Apply the benchmarking summarizing function to get a final dataframe
@@ -58,29 +59,34 @@ out_summary <- out_summary %>%
 
 #####PLOTS######
 # Plot the impact of each of the parameters on AUC
-plots <- generate_auc_param_plots(data = out_summary,
-                                  params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
-                                  phenotype_column = "mendelian_disease_group")
+plots <- generate_param_plots(data = out_summary,
+                              y_variable="auc",
+                              params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                              phenotype_column = "mendelian_disease_group")
 plots[[1]]
 
-plots_restart_0.8 <- generate_auc_param_plots(data = filter(out_summary, restart_prob==0.8),
-                                              params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
-                                              phenotype_column = "mendelian_disease_group")
-plots_restart_0.8[[4]]
+plots_restart_0.7 <- generate_param_plots(data = filter(out_summary, restart_prob==0.7),
+                                          y_variable="fisher_or",
+                                          params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                          phenotype_column = "mendelian_disease_group")
+plots_restart_0.7[[4]]
 
-plots_softmaxTRUE <- generate_auc_param_plots(data = filter(out_summary, restart_prob==0.8 & softmax==TRUE),
-                                              params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
-                                              phenotype_column = "mendelian_disease_group")
+plots_softmaxTRUE <- generate_param_plots(data = filter(out_summary, restart_prob==0.7 & softmax==TRUE),
+                                          y_variable="fisher_or",
+                                          params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                          phenotype_column = "mendelian_disease_group")
 plots_softmaxTRUE[[3]]
 
-plots_restart_nseeds500 <- generate_auc_param_plots(data = filter(out_summary, restart_prob==0.8 & n_seeds==500),
-                                              params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
-                                              phenotype_column = "mendelian_disease_group")
-plots_restart_nseeds500[[2]]
-
-plots_best_param <- generate_auc_param_plots(data = filter(out_summary, softmax==TRUE & n_seeds==500 & adj_hub==FALSE),
+plots_restart_nseeds500 <- generate_param_plots(data = filter(out_summary, restart_prob==0.7 & n_seeds==500),
+                                                    y_variable="fisher_or",
                                                     params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
                                                     phenotype_column = "mendelian_disease_group")
+plots_restart_nseeds500[[2]]
+
+plots_best_param <- generate_param_plots(data = filter(out_summary, softmax==TRUE & n_seeds==500 & adj_hub==FALSE),
+                                         y_variable="fisher_or",
+                                         params = c("restart_prob", "softmax", "n_seeds", "adj_hub"),
+                                         phenotype_column = "mendelian_disease_group")
 plots_best_param[[1]]
 
 ##########################################################################################
