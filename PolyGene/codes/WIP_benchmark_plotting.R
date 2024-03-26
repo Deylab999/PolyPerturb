@@ -44,8 +44,31 @@ file_info_df <- tribble(
   old_pn_full_filename, "Old_PolyNetSTRING+CoEx", 0.5, FALSE,11000,FALSE
 )
 
-# Step 1: Data Preprocessing
-data_preprocessing <- function(file_info_df) {
+#' Performing gene and phenotype intersection filtering for downstream benchmarking
+#' of input gene scoring files
+#'
+#' This function preprocesses benchmarking data for overlap analysis by finding the intersection of
+#' overlapping phenotypes and genes and filtering the input datasets to that intersection
+#'
+#' @param file_info_df A data frame containing the columns filename, label.
+#' Filename is the path to the gene scores to be benchmarked.
+#' Label is what to label this dataset (e.g. in plotting).
+#' 
+#' @return A list containing a processed dataframe for each row of the "file_info_df"
+#' dataframe. The names of each list element will be the provided label.
+#' 
+#' @examples
+#'file_info <- tribble(
+#'  ~filename, ~label,
+#'  "/data/POPs_MAGMA_0kb.txt", "PoPs",
+#'  "/data/original_output/PPI_STRING_MAGMA.txt", "Best_PolyNetSTRING",
+#')
+#' benchmarking_data_overlap_preprocessing(file_info)
+#'
+#' @import tidyverse
+#' @import data.table
+#' 
+benchmarking_data_overlap_preprocessing <- function(file_info_df) {
   library(tidyverse)
   library(data.table)
   
@@ -95,11 +118,39 @@ data_preprocessing <- function(file_info_df) {
   return(result_list)
 }
 
-pp_out <- data_preprocessing(file_info_df)
 
-# Step 2: Benchmarking
-benchmarking <- function(data_list = pp_out,
-                         gt_file = gt,
+#' Perform benchmarking for lists of data
+#'
+#' This function performs benchmarking for lists of data,
+#' computing AUC and Fisher's Exact Enrichment for genes above
+#' the specified threshold
+#'
+#' @param data_list A list of datasets for benchmarking. Typically the output
+#' of benchmarking_data_overlap_preprocessing
+#' @param gt_file Ground truth data that specifies true positives and true negatives.
+#' str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.csv") by default.
+#' @param grouping_column How to group the phenotypes. "mendelian_disease_group"
+#' by default. Could also be "complex_trait" 
+#' @param percentile_threshold Percentile threshold for enrichment calculation. 0.95 by default.
+#' @param label Label for the dataset being processed.
+#' @param restart_prob Optional: Restart probability of the input datasets. NA by default.
+#' @param softmax Optional: Softmax TRUE/FALSE for the input datasets. NA by default.
+#' @param n_seeds Optional: Number of seeds for benchmarking. NA by default.
+#' @param adj_hub Optional: Hub Adjustment TRUE/FALSE. NA by default.
+#' @param thresholds Threshold values for sensitivity and specificity calculations.
+#'
+#' @return A list containing benchmarking results for each dataset.
+#'
+#' @examples
+#' benchmarking_for_lists(data_list = pp_out, gt_file = gt, grouping_column = "mendelian_disease_group", 
+#'                       percentile_threshold = 0.95, label = NA, restart_prob = NA, softmax = NA, 
+#'                       n_seeds = NA, adj_hub = NA, thresholds = c(0, 0.01, 0.05, 0.2, 0.3, 0.4, 0.5, 
+#'                       0.6, 0.7, 0.8, 0.9, 0.95, 0.99, 1))
+#'
+#' @importFrom dplyr mutate
+#'
+benchmarking_for_lists <- function(data_list = pp_out,
+                         gt_file = str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.csv"),
                          grouping_column = "mendelian_disease_group",
                          percentile_threshold = 0.95,
                          label = NA,
@@ -137,12 +188,29 @@ benchmarking <- function(data_list = pp_out,
   return(result_list)
 }
 
-# Example usage with a list containing a single dataframe
-test_bm_summary_list <- benchmarking(data_list = pp_out)
-
-# Step 3: Visualization
+#' Plot comparison of benchmarking summary (i.e. AUC and Enrichment OR)
+#'
+#' This function plots the comparison of benchmarking performance metrics 
+#' (AUC or Enrichment OR) across a list of input dataframes
+#'
+#' @param bm_summary_list A list of benchmarking summary data frames that contain
+#' the fisher_or and/or auc columns and their CIs.
+#' @param y_axis_column The column name for the y-axis. "auc" by defualt.
+#' @param x_axis_column The group column to plot on the x-axis.
+#' "mendelian_disease_group by default"
+#'
+#' @return A ggplot object representing the comparison plot.
+#'
+#' @examples
+#' plot_comparison(bm_summary_list = test_bm_summary_list, y_axis_column = "auc", 
+#'                 x_axis_column = "mendelian_disease_group")
+#'
+#' @import ggplot2
+#' @importFrom dplyr bind_rows
+#' @importFrom ggplot2 geom_point geom_errorbar labs scale_color_discrete theme_bw theme
+#'
 plot_comparison <- function(bm_summary_list = test_bm_summary_list,
-                            y_axis_column = "fisher_or",
+                            y_axis_column = "auc",
                             x_axis_column = "mendelian_disease_group") {
   
   combined_summary <- do.call(bind_rows, bm_summary_list)
@@ -164,18 +232,48 @@ plot_comparison <- function(bm_summary_list = test_bm_summary_list,
     theme(axis.text.x = element_text(angle = 75, hjust = 1))
 }
 
+#' Perform benchmarking, visualization, and combine results
+#'
+#' This function performs benchmarking of multiple gene ranking dataframes against
+#' a ground truth dataset, plots a comparison of each dataset with respect to
+#' AUC and Fisher's Exact Enrichment above some threshold, and combines the results
+#' into a single dataframe based on an input dataframe of filenames and labels.
+#'
+#' @param file_info_df A dataframe containing information about the files to be processed
+#' by benchmarking_data_overlap_preprocessing(). The dataframe should include filenames and corresponding labels.
+#' @param gt_file Ground truth data file. str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.csv") by default.
+#' @param threshold Threshold for percentile calculation. 0.95 by default.
+#' @param thresholds Threshold values for benchmarking calculations to report. c(0.95) by default.
+#' @param y_axis_columns c("fisher_or", "auc") by default.
+#' @param x_axis_column "mendelian_disease_group"
+#'
+#' @return A list containing the following elements:
+#' \item{fisher_or_plot}{A ggplot object representing the comparison plot for Fisher OR.}
+#' \item{auc_plot}{A ggplot object representing the comparison plot for AUC.}
+#' \item{combined_df}{A combined dataframe containing benchmarking results}
+#'
+#' @examples
+#' benchmark_plot_and_results(file_info_df = file_info_df,
+#' gt_file = str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.csv"),
+#' threshold = 0.95,
+#' thresholds = c(0.95),
+#' y_axis_columns = c("fisher_or", "auc"),
+#' x_axis_column = "mendelian_disease_group")
+#'
+#' @import dplyr
+#' @import ggplot2
 benchmark_plot_and_results <- function(file_info_df,
-                                       gt_file = gt,
+                                       gt_file = str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.csv"),
                                        threshold = 0.95,
                                        thresholds = c(threshold),
                                        y_axis_columns = c("fisher_or", "auc"),
                                        x_axis_column = "mendelian_disease_group") {
     
     # Step 1: Data Preprocessing
-    pp_out <- data_preprocessing(file_info_df)
+    pp_out <- benchmarking_data_overlap_preprocessing(file_info_df)
     
     # Step 2: Benchmarking
-    bm_summary_list <- benchmarking(data_list = pp_out,
+    bm_summary_list <- benchmarking_for_lists(data_list = pp_out,
                                     gt_file = gt_file,
                                     grouping_column = x_axis_column,
                                     percentile_threshold = threshold)
@@ -204,7 +302,3 @@ benchmark_plot_and_results <- function(file_info_df,
 
 # Example usage
 output_list <- benchmark_plot_and_results(file_info_df)
-
-
-
-
