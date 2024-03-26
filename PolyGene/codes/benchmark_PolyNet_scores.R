@@ -34,7 +34,21 @@ compute_sensitivity_specificity <- function(data,
                                                            0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
                                                            0.95, 0.99, 1)) {
   library(tidyverse)
+  library(data.table)
   library(pROC)
+  
+  # Check if 'data' is a filepath or a dataframe
+  if (is.character(data)) {
+    data <- fread(data)
+  }
+  
+  if (is.character(ground_truth_df)) {
+    ground_truth_df <- fread(ground_truth_df)
+  }
+  
+  if("V1" %in% colnames(data)){
+    data <- data %>% rename("gene_symbol" = "V1")
+  }
   
   # Calculate percentile ranks for each phenotype
   percentile_ranks <- data %>%
@@ -201,9 +215,11 @@ summarize_benchmarks <- function(restart_prob = 0.7,
                                                             "Mendelian_Freund_2018_Benchmarking/",
                                                             "MAGMA_0kb/STRING_PolyNet/",
                                                             "RWR_restart0.7_softmaxTRUE_nSeeds500_HubGeneAdjustFALSE.csv")){
-  
+  bm <- benchmark_filename
   #read in the benchmarking file from disc
-  bm <- fread(benchmark_filename)
+  if (is.character( benchmark_filename)) {
+    bm <- fread(benchmark_filename)
+  }
   
   #add Fisher's exact SE
   bm <- bm %>%

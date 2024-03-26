@@ -34,14 +34,14 @@ parameter_grid <- expand.grid(restart_prob = c(0, 0.2, 0.5, 0.7, 0.8, 0.9, 1),
 
 # Apply the function to each combination of parameters specified in the parameter_grid df
 # NOTE: THIS TAKES ~2 HOURS WITH CURRENT PARAM GRID
-#pmap(parameter_grid,
-#     ~run_benchmarking_with_parameters(restart_prob = ..1,
-#                                       softmax = ..2,
-#                                       n_seeds = ..3,
-#                                       adj_hub = ..4,
-#                                       outfile_name = ..5,
-#                                       ground_truth = gt,
-#                                       graph = string_graph))
+pmap(parameter_grid,
+     ~run_benchmarking_with_parameters(restart_prob = ..1,
+                                       softmax = ..2,
+                                       n_seeds = ..3,
+                                       adj_hub = ..4,
+                                       outfile_name = ..5,
+                                       ground_truth = gt,
+                                       graph = string_graph))
 
 
 # Apply the benchmarking summarizing function to get a final dataframe
@@ -53,7 +53,7 @@ out_summary <- pmap_df(parameter_grid,
                                            benchmark_filename = ..5,
                                            grouping_column = "mendelian_disease_group"))
 out_summary <- out_summary %>%
-  mutate(n_seeds = str_replace_na(n_seeds, "14000")) %>%
+  mutate(n_seeds = str_replace_na(n_seeds, "14891")) %>%
   mutate(n_seeds = as.numeric(n_seeds))
 
 
@@ -130,7 +130,7 @@ pops_raw <- pops_raw %>%
   filter(gene_symbol %in% overlapping_genes)
 
 #run pops benchmarking
-pops_bm <- compute_sensitivity_specificity(data = pops_raw,
+pops_bm <- compute_sensitivity_specificity(data = rwr_best_param,
                                              ground_truth_df = gt,
                                              thresholds = c(0, 0.01, 0.05,
                                                             0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
