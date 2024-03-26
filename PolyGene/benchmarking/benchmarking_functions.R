@@ -2,9 +2,9 @@ library(here)
 library(tidyverse)
 library(data.table)
 
-source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
-source(str_c(here(), "/PolyGene/codes/ppi_string_RWR.R"))
-source(str_c(here(), "/PolyGene/codes/run_pagerank.R"))
+source(str_c(here(), "/PolyGene/PolyNet/create_STRING_graph_object.R"))
+source(str_c(here(), "/PolyGene/PolyNet/run_RWR.R"))
+source(str_c(here(), "/PolyGene/PolyNet/run_pagerank.R"))
 
 #' Compute sensitivity, specificity, precision, recall, Fisher's exact test p-value, and odds ratio.
 #'

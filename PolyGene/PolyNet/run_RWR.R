@@ -1,7 +1,7 @@
 library(here)
 library(tidyverse)
 
-source(str_c(here(), "/PolyGene/codes/create_string_graph_object.R"))
+source(str_c(here(), "/PolyGene/PolyNet/create_STRING_graph_object.R"))
 
 #' @param gene_scores  matrix of gene scores with genes along the rows and gene sets along the columns
 #' @param restart_prob The probability of restart for RWR method (default is 0.8, which appears to 
