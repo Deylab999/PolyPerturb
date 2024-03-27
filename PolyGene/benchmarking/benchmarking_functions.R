@@ -538,7 +538,7 @@ benchmarking_data_overlap_preprocessing <- function(file_info_df) {
 #'
 #' @importFrom dplyr mutate
 #'
-benchmarking_for_lists <- function(data_list = pp_out,
+benchmarking_for_lists <- function(data_list,
                                    gt_file = str_c(here(),"/data/freund_2018_monogenic_to_complex_ground_truth.csv"),
                                    grouping_column = "mendelian_disease_group",
                                    percentile_threshold = 0.95,
@@ -615,7 +615,7 @@ plot_comparison <- function(bm_summary_list = test_bm_summary_list,
                   position = position_dodge(width = 0.4),
                   width = 0.3) +
     labs(title = paste("Compare", y_axis_column), "Performance Across Methods",
-         x = "Mendelian Phenotype Group") +
+         x = "Phenotype Group") +
     scale_color_discrete(name = "Algorithm") +
     theme_bw() +
     theme(axis.text.x = element_text(angle = 75, hjust = 1))
@@ -672,7 +672,7 @@ benchmark_plot_and_results <- function(file_info_df,
   for(metric in y_axis_columns) {
     plot_comparison <- plot_comparison(bm_summary_list = bm_summary_list,
                                        y_axis_column = metric,
-                                       x_axis_column = "mendelian_disease_group")
+                                       x_axis_column = x_axis_column)
     plots[[metric]] <- plot_comparison
   }
   
